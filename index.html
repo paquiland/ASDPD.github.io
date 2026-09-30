@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dance Academy</title>
+<style>
+:root{--pink:#ff1688;--dark:#08090d;--dark2:#12141b;--light:#f6f6f8;--text:#17181d;--muted:#70737b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);line-height:1.5}a{text-decoration:none;color:inherit}button,input,textarea,select{font:inherit}.wrap{width:min(1180px,92%);margin:auto}
+.top{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(5,6,9,.88);backdrop-filter:blur(12px);color:#fff}.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;letter-spacing:3px;font-size:20px}.logo small{display:block;color:var(--pink);font-size:9px;letter-spacing:5px}.links{display:flex;gap:24px;align-items:center;font-size:12px;font-weight:700}.links a:hover{color:var(--pink)}.wa{background:#20b967;padding:10px 16px;border-radius:25px}.hamb{display:none;background:none;border:0;color:#fff;font-size:25px}
+.hero{min-height:760px;padding-top:72px;display:flex;align-items:center;color:#fff;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.48)),url('https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&fit=crop&w=2200&q=85') center/cover}.hero h1{font-size:clamp(45px,7vw,84px);line-height:.95;margin:12px 0}.script{font-family:Georgia,serif;font-style:italic;color:var(--pink);font-weight:400}.eyebrow{font-size:12px;color:var(--pink);font-weight:900;letter-spacing:2px;text-transform:uppercase}.hero p{max-width:580px;color:#ddd;font-size:18px}.btn{display:inline-block;border:0;border-radius:28px;padding:14px 22px;font-size:12px;font-weight:900;cursor:pointer}.primary{background:var(--pink);color:#fff}.outline{border:1px solid #fff;color:#fff;background:transparent}.hero .btn{margin:15px 8px 0 0}
+section{padding:85px 0}.dark{background:var(--dark);color:#fff}.light{background:var(--light)}h2{font-size:clamp(32px,4vw,50px);line-height:1.05;margin:8px 0 15px}p{color:var(--muted)}.dark p{color:#aaa}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid2{display:grid;grid-template-columns:1fr 1.5fr;gap:55px;align-items:center}.age-card,.course,.person,.review{border-radius:18px;overflow:hidden}.age-card{min-height:300px;background-size:cover;background-position:center;position:relative;display:flex;align-items:end;color:#fff}.age-card:after,.course:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,.9))}.age-card div,.course div{position:relative;z-index:2;padding:22px}.age-card:nth-child(1){background-image:url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=700&q=80')}.age-card:nth-child(2){background-image:url('https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=700&q=80')}.age-card:nth-child(3){background-image:url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=700&q=80')}
+.course-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.course{height:280px;position:relative;background-size:cover;background-position:center;display:flex;align-items:end;color:#fff}.course:nth-child(1){background-image:url('https://images.unsplash.com/photo-1545224144-b38cd3094a9a?auto=format&fit=crop&w=700&q=80')}.course:nth-child(2){background-image:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=700&q=80')}.course:nth-child(3){background-image:url('https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=700&q=80')}.course:nth-child(4){background-image:url('https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?auto=format&fit=crop&w=700&q=80')}.course:nth-child(5){background-image:url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=700&q=80')}.course:nth-child(6){background-image:url('https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=700&q=80')}.course a{color:var(--pink);font-size:11px;font-weight:900}
+.phil{color:#fff;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.45)),url('https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=2200&q=85') center/cover}.values{display:flex;gap:25px;flex-wrap:wrap}.value b{display:block;color:var(--pink);font-size:25px}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.person{background:#fff;box-shadow:0 10px 30px #0001}.person img{width:100%;height:250px;object-fit:cover}.person div{padding:16px}.person p{font-size:11px;color:var(--pink);font-weight:800}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gallery img{height:190px;width:100%;object-fit:cover;border-radius:12px}
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.video-card{background:#000;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:16/9}
+.video-card iframe,.video-card video{width:100%;height:100%;display:block;border:0;position:absolute;inset:0}
+.video-card .vtitle{position:absolute;left:0;right:0;bottom:0;padding:12px 16px;color:#fff;font-size:13px;font-weight:700;background:linear-gradient(transparent,rgba(0,0,0,.85));z-index:2}
+.benefits{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#ddd}.benefit{text-align:center;background:var(--light);padding:28px 15px}.benefit b{font-size:25px;color:var(--pink)}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.review{padding:24px;border:1px solid #e4e4e7}.stars{color:var(--pink);letter-spacing:3px}
+.table{border:1px solid #292c35;border-radius:15px;overflow:hidden}.row{display:grid;grid-template-columns:110px 90px 1fr;padding:14px 18px;border-bottom:1px solid #292c35;font-size:12px}.row:last-child{border:0}.head{color:var(--pink);font-weight:900}
+.cta{color:#fff;background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.5)),url('https://images.unsplash.com/photo-1524594150405-9f6a3d8f5b8f?auto=format&fit=crop&w=2200&q=85') center/cover}.cta-flex{display:flex;justify-content:space-between;gap:40px;align-items:center}
+footer{background:#07080b;color:#aaa;padding:45px 0 20px}.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.foot h4{color:#fff;font-size:12px}.foot a,.foot p{font-size:11px;display:block;margin:6px 0}.copy{border-top:1px solid #222;margin-top:30px;padding-top:18px;font-size:10px}
+.float{position:fixed;right:20px;bottom:20px;background:#20b967;color:#fff;border-radius:50%;width:55px;height:55px;display:grid;place-items:center;font-size:23px;z-index:40}
+.adminBtn{position:fixed;left:18px;bottom:18px;z-index:80;background:#111;color:#fff;border:1px solid #444;border-radius:25px;padding:11px 16px;font-size:11px;font-weight:800;cursor:pointer}
+.admin{display:none;position:fixed;inset:0;background:#f2f3f5;z-index:100;overflow:auto}.admin.open{display:block}.adminHead{position:sticky;top:0;background:#08090d;color:#fff;padding:14px 3%;display:flex;justify-content:space-between;align-items:center;z-index:2}.adminHead button{border:0;border-radius:20px;padding:9px 14px;cursor:pointer}.adminBody{width:min(1100px,94%);margin:25px auto}.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:#fff;border-radius:16px;padding:22px;box-shadow:0 5px 20px #0000000d}.panel h3{margin:0 0 15px}.field{margin:10px 0}.field label{display:block;font-size:11px;font-weight:800;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;border:1px solid #ddd;border-radius:9px;padding:10px;font-size:13px}.field textarea{min-height:80px}.save{background:var(--pink);color:#fff;border:0;border-radius:24px;padding:12px 20px;font-weight:800;cursor:pointer}.item{border-top:1px solid #eee;padding:12px 0;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}.danger{background:#eee;border:0;border-radius:7px;padding:7px;cursor:pointer}.admin-note{background:#fff8e5;border-left:4px solid #e8a400;padding:13px;font-size:12px;margin-bottom:18px}.upload-preview{max-height:120px;border-radius:10px;margin-top:8px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:0;background:#ddd;padding:9px 13px;border-radius:20px;cursor:pointer}.tab.active{background:#111;color:#fff}
+.video-item-edit{display:grid;grid-template-columns:1fr;gap:6px;padding:12px;background:#fafafa;border:1px solid #eee;border-radius:10px;margin-bottom:10px}
+.video-item-edit .row2{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.video-item-edit .preview{margin-top:6px;border-radius:8px;overflow:hidden;aspect-ratio:16/9;background:#000;position:relative}
+.video-item-edit .preview iframe,.video-item-edit .preview video{width:100%;height:100%;border:0;position:absolute;inset:0}
+@media(max-width:950px){.links{display:none}.hamb{display:block}.grid2{grid-template-columns:1fr}.course-grid{grid-template-columns:repeat(3,1fr)}.benefits{grid-template-columns:repeat(3,1fr)}.foot{grid-template-columns:1fr 1fr}.adminGrid{grid-template-columns:1fr}}
+@media(max-width:650px){section{padding:60px 0}.grid3,.people,.reviews,.gallery,.video-grid{grid-template-columns:1fr}.course-grid{grid-template-columns:repeat(2,1fr)}.course{height:220px}.benefits{grid-template-columns:1fr 1fr}.cta-flex{flex-direction:column;align-items:flex-start}.foot{grid-template-columns:1fr}.hero{min-height:680px}.hero p{font-size:15px}.row{grid-template-columns:75px 65px 1fr;font-size:10px;padding:11px}.nav.mobile{position:absolute;top:72px;left:0;right:0;background:#08090d;padding:20px;display:flex;flex-direction:column;align-items:flex-start}.nav.mobile .links{display:flex;flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap nav" id="nav">
+  <a class="logo" href="#home"><span id="logoText">DANCE</span><small>ACADEMY</small></a>
+  <div class="links"><a href="#home">Home</a><a href="#corsi">Corsi</a><a href="#insegnanti">Insegnanti</a><a href="#video">Video</a><a href="#gallery">Gallery</a><a href="#orari">Orari</a><a href="#contatti">Contatti</a><a class="wa" id="navWa" href="#" target="_blank">WhatsApp</a></div>
+  <button class="hamb" onclick="document.getElementById('nav').classList.toggle('mobile')">☰</button>
+</div></header>
+
+<section class="hero" id="home"><div class="wrap">
+  <div class="eyebrow" id="heroEyebrow">Scuola di danza</div>
+  <h1 id="heroTitle">Vivi la danza.<br><span class="script">Vivi te stesso.</span></h1>
+  <p id="heroText">Corsi di danza per bambini, ragazzi e adulti. Passione, energia e divertimento in ogni passo.</p>
+  <a class="btn primary" href="#contatti" id="heroBtn">PROVA UNA LEZIONE →</a>
+  <a class="btn outline" href="#corsi">SCOPRI I CORSI →</a>
+</div></section>
+
+<section><div class="wrap grid2"><div><div class="eyebrow" id="ageEyebrow">Per ogni età, un percorso</div><h2 id="ageTitle">Non importa da dove parti.<br><span class="script">Importa dove vuoi arrivare.</span></h2><p id="ageText">Che tu sia alla prima esperienza o abbia già anni di danza alle spalle, troverai il corso e il percorso più adatto a te.</p></div><div class="grid3" id="ageCards"></div></div></section>
+
+<section class="dark" id="corsi"><div class="wrap"><div class="eyebrow">I nostri corsi</div><h2>Scopri il tuo ritmo.</h2><p>Scegli la disciplina che più ti rappresenta.</p><div class="course-grid" id="courses"></div></div></section>
+
+<section class="phil"><div class="wrap grid2"><div></div><div><div class="eyebrow">La nostra filosofia</div><h2 id="missionTitle">Non insegniamo solo a <span class="script">ballare.</span></h2><p id="missionText">Insegniamo ad esprimersi, a mettersi in gioco, a condividere emozioni e a sentirsi parte di qualcosa.</p><div class="values"><div class="value"><b>♡</b>Passione</div><div class="value"><b>♢</b>Rispetto</div><div class="value"><b>↗</b>Crescita</div><div class="value"><b>☺</b>Divertimento</div><div class="value"><b>♧</b>Condivisione</div></div></div></div></section>
+
+<section id="insegnanti"><div class="wrap grid2"><div><div class="eyebrow">I nostri insegnanti</div><h2>Professionisti con la passione per la danza.</h2><p>Un team qualificato, pronto ad accompagnarti nel tuo percorso con competenza ed entusiasmo.</p></div><div class="people" id="people"></div></div></section>
+
+<section class="dark" id="video"><div class="wrap"><div class="eyebrow">Guardaci in azione</div><h2>I nostri video.</h2><p>Un assaggio dell'energia che si respira in sala.</p><div class="video-grid" id="videoGrid"></div></div></section>
+
+<section class="dark" id="gallery"><div class="wrap grid2"><div><div class="eyebrow">La nostra energia</div><h2>Non è solo una lezione.<br><span class="script">È un'esperienza.</span></h2><p>Scopri l'atmosfera della nostra scuola.</p></div><div class="gallery" id="galleryGrid"></div></div></section>
+
+<section class="light"><div class="wrap"><div class="eyebrow">Perché scegliere noi?</div><h2>Più di una scuola.</h2><div class="benefits" id="benefits"></div></div></section>
+
+<section><div class="wrap"><div class="eyebrow">Le parole dei nostri allievi</div><h2>Le nostre storie.</h2><div class="reviews" id="reviews"></div></div></section>
+
+<section class="dark" id="orari"><div class="wrap grid2"><div><div class="eyebrow">Trova il corso giusto per te</div><h2>Orari e corsi.</h2><p>Consulta il calendario della scuola.</p></div><div class="table" id="schedule"></div></div></section>
+
+<section class="cta" id="contatti"><div class="wrap cta-flex"><div><div class="eyebrow">Il tuo primo passo</div><h2>Inizia qui.</h2><p>Non serve essere ballerini. Serve solo la voglia di iniziare.</p><a class="btn primary" href="#" onclick="sendWhatsApp();return false">PRENOTA LA TUA LEZIONE →</a></div><div id="contactBox"></div></div></section>
+
+<footer><div class="wrap"><div class="foot"><div><div class="logo">DANCE<small>ACADEMY</small></div><p id="footerTag">Vivi la danza. Vivi te stesso.</p></div><div><h4>NAVIGA</h4><a href="#corsi">Corsi</a><a href="#insegnanti">Insegnanti</a><a href="#video">Video</a><a href="#orari">Orari</a></div><div><h4>SCUOLA</h4><a href="#gallery">Gallery</a><a href="#contatti">Contatti</a></div><div><h4>SOCIAL</h4><a id="ig" href="#" target="_blank">Instagram</a><a id="fb" href="#" target="_blank">Facebook</a><a id="tk" href="#" target="_blank">TikTok</a></div></div><div class="copy">© <span id="year"></span> <span id="copyrightName">Dance Academy</span>. Tutti i diritti riservati.</div></div></footer>
+
+<a class="float" id="floatWa" href="#" target="_blank">◉</a>
+<button class="adminBtn" onclick="openAdmin()">⚙ MODIFICA SITO</button>
+
+<div class="admin" id="admin"><div class="adminHead"><b>GESTIONE SITO</b><button onclick="closeAdmin()">← Torna al sito</button></div><div class="adminBody">
+  <div class="admin-note"><b>Come funziona:</b> le modifiche vengono salvate nel browser di questo computer. Per un pannello condiviso online con salvataggio sul server serve collegare un database/hosting.</div>
+  <div class="tabs"><button class="tab active" onclick="showTab('generale',this)">Generale</button><button class="tab" onclick="showTab('corsiAdmin',this)">Corsi</button><button class="tab" onclick="showTab('teamAdmin',this)">Insegnanti</button><button class="tab" onclick="showTab('orariAdmin',this)">Orari</button><button class="tab" onclick="showTab('recensioniAdmin',this)">Recensioni</button><button class="tab" onclick="showTab('videoAdmin',this)">Video</button><button class="tab" onclick="showTab('galleryAdmin',this)">Gallery</button></div>
+
+  <div id="generale" class="adminGrid">
+    <div class="panel"><h3>Nome e testi</h3>
+      <div class="field"><label>Nome scuola</label><input id="a_name"></div>
+      <div class="field"><label>Sottotitolo</label><input id="a_tagline"></div>
+      <div class="field"><label>Titolo principale</label><textarea id="a_heroTitle"></textarea></div>
+      <div class="field"><label>Testo principale</label><textarea id="a_heroText"></textarea></div>
+      <div class="field"><label>Mission</label><textarea id="a_mission"></textarea></div>
+      <button class="save" onclick="saveGeneral()">SALVA MODIFICHE</button>
+    </div>
+    <div class="panel"><h3>Contatti e social</h3>
+      <div class="field"><label>WhatsApp (solo numeri, es. 393331234567)</label><input id="a_wa"></div>
+      <div class="field"><label>Telefono</label><input id="a_phone"></div>
+      <div class="field"><label>Indirizzo</label><input id="a_address"></div>
+      <div class="field"><label>Instagram</label><input id="a_ig"></div>
+      <div class="field"><label>Facebook</label><input id="a_fb"></div>
+      <div class="field"><label>TikTok</label><input id="a_tk"></div>
+      <button class="save" onclick="saveGeneral()">SALVA CONTATTI</button>
+    </div>
+    <div class="panel"><h3>Immagine principale</h3><div class="field"><label>URL immagine Hero</label><input id="a_heroImg"></div><p style="font-size:11px">Per una versione definitiva puoi caricare le foto sul tuo hosting e incollare qui l'indirizzo.</p><button class="save" onclick="saveGeneral()">SALVA IMMAGINE</button></div>
+  </div>
+
+  <div id="corsiAdmin" class="panel" style="display:none"><h3>Corsi</h3><div id="courseList"></div><button class="save" onclick="addCourse()">+ AGGIUNGI CORSO</button></div>
+  <div id="teamAdmin" class="panel" style="display:none"><h3>Insegnanti</h3><div id="teamList"></div><button class="save" onclick="addPerson()">+ AGGIUNGI INSEGNANTE</button></div>
+  <div id="orariAdmin" class="panel" style="display:none"><h3>Orari</h3><div id="scheduleList"></div><button class="save" onclick="addSchedule()">+ AGGIUNGI ORARIO</button></div>
+  <div id="recensioniAdmin" class="panel" style="display:none"><h3>Recensioni</h3><div id="reviewList"></div><button class="save" onclick="addReview()">+ AGGIUNGI RECENSIONE</button></div>
+
+  <div id="videoAdmin" class="panel" style="display:none">
+    <h3>Video</h3>
+    <p style="font-size:12px;color:#666">Incolla un link YouTube normale (watch, youtu.be, shorts) o l'URL di un tuo file MP4: viene convertito automaticamente nel formato giusto.</p>
+    <div id="videoList"></div>
+    <button class="save" onclick="addVideo()">+ AGGIUNGI VIDEO</button>
+    <button class="save" style="background:#111;margin-left:8px" onclick="saveVideos()">SALVA TUTTI I VIDEO</button>
+  </div>
+
+  <div id="galleryAdmin" class="panel" style="display:none"><h3>Gallery</h3><p style="font-size:12px;color:#666">Inserisci URL delle fotografie. Le immagini possono poi essere sostituite con quelle reali della scuola.</p><div id="galleryList"></div><button class="save" onclick="addGallery()">+ AGGIUNGI FOTO</button></div>
+</div></div>
+
+<script>
+const KEY='danceAcademyV2';
+const defaults={
+ name:'Dance Academy',tagline:'Vivi la danza. Vivi te stesso.',
+ heroTitle:'Vivi la danza.<br><span class="script">Vivi te stesso.</span>',
+ heroText:'Corsi di danza per bambini, ragazzi e adulti. Passione, energia e divertimento in ogni passo.',
+ mission:'Insegniamo ad esprimersi, a mettersi in gioco, a condividere emozioni e a sentirsi parte di qualcosa.',
+ wa:'393331234567',phone:'+39 081 7654321',address:'Via Roma 123, Napoli',ig:'#',fb:'#',tk:'#',
+ heroImg:'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&fit=crop&w=2200&q=85',
+ courses:[
+  ['Salsa','https://images.unsplash.com/photo-1545224144-b38cd3094a9a?auto=format&fit=crop&w=700&q=80'],
+  ['Bachata','https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=700&q=80'],
+  ['Balli di gruppo','https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=700&q=80'],
+  ['Danza moderna','https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?auto=format&fit=crop&w=700&q=80'],
+  ['Danza bambini','https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=700&q=80'],
+  ['Danza ragazzi','https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=700&q=80']],
+ people:[
+  ['Giulia Rossi','Maestra di Salsa e Bachata','https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'],
+  ['Marco Bianchi','Maestro di Danza Moderna','https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'],
+  ['Sara Conti','Maestra di Danza Classica','https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80']],
+ schedule:[['Lunedì','19:00','Salsa - Principianti'],['Martedì','18:30','Danza Ragazzi'],['Mercoledì','19:30','Bachata - Intermedio'],['Giovedì','18:00','Danza Bambini'],['Venerdì','20:30','Balli di gruppo']],
+ reviews:[['Federica M.','Abbiamo iniziato per curiosità e ci siamo innamorati della danza. Un ambiente fantastico e insegnanti sempre disponibili.'],['Antonio R.','Professionalità, passione e tanto divertimento. Consigliatissima!'],['Laura S.','Mia figlia non vede l’ora che arrivi il giorno della lezione. Un posto speciale per crescere e fare nuove amicizie.']],
+ videos:[
+  ['Esibizione di fine anno','https://www.youtube.com/embed/dQw4w9WgXcQ'],
+  ['Lezione di salsa','https://www.youtube.com/embed/ScMzIvxBSi4']
+ ],
+ gallery:[
+ 'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=900&q=80',
+ 'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=900&q=80',
+ 'https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=900&q=80',
+ 'https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=900&q=80',
+ 'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&fit=crop&w=900&q=80',
+ 'https://images.unsplash.com/photo-1524594150405-9f6a3d8f5b8f?auto=format&fit=crop&w=900&q=80']
+};
+let data=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(defaults);
+if(!data.videos)data.videos=structuredClone(defaults.videos);
+
+/* ============ CONVERSIONE AUTOMATICA URL VIDEO ============ */
+function toEmbedUrl(url){
+  url=(url||'').trim();
+  if(!url)return '';
+  // Già in formato embed
+  if(/youtube\.com\/embed\//i.test(url))return url + (url.includes('?')?'&':'?') + 'rel=0';
+  // youtube.com/shorts/ID
+  let m=url.match(/youtube\.com\/shorts\/([\w-]{6,})/i);
+  if(m)return `https://www.youtube.com/embed/${m[1]}?rel=0`;
+  // youtube.com/watch?v=ID
+  m=url.match(/[?&]v=([\w-]{6,})/i);
+  if(m)return `https://www.youtube.com/embed/${m[1]}?rel=0`;
+  // youtu.be/ID
+  m=url.match(/youtu\.be\/([\w-]{6,})/i);
+  if(m)return `https://www.youtube.com/embed/${m[1]}?rel=0`;
+  // Vimeo
+  m=url.match(/vimeo\.com\/(?:video\/)?(\d+)/i);
+  if(m)return `https://player.vimeo.com/video/${m[1]}`;
+  // File locale
+  if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(url))return url;
+  // Fallback: restituisci così com'è
+  return url;
+}
+function isVideoFile(url){return /\.(mp4|webm|ogg)(\?.*)?$/i.test(url||'')}
+
+/* ============ RENDER ============ */
+function persist(silent){
+  localStorage.setItem(KEY,JSON.stringify(data));
+  render();
+  if(!silent){renderAdmin();alert('Modifiche salvate.')}
+}
+function render(){
+ document.title=data.name;
+ document.getElementById('logoText').textContent=data.name.split(' ')[0].toUpperCase();
+ document.getElementById('heroEyebrow').textContent='Scuola di danza';
+ document.getElementById('heroTitle').innerHTML=data.heroTitle;
+ document.getElementById('heroText').textContent=data.heroText;
+ document.querySelector('.hero').style.backgroundImage=`linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.48)),url('${data.heroImg}')`;
+ document.getElementById('missionText').textContent=data.mission;
+ document.getElementById('navWa').href=`https://wa.me/${data.wa}`;document.getElementById('floatWa').href=`https://wa.me/${data.wa}`;
+ document.getElementById('ig').href=data.ig;document.getElementById('fb').href=data.fb;document.getElementById('tk').href=data.tk;
+ document.getElementById('footerTag').textContent=data.tagline;document.getElementById('copyrightName').textContent=data.name;document.getElementById('year').textContent=new Date().getFullYear();
+ document.getElementById('courses').innerHTML=data.courses.map(x=>`<article class="course" style="background-image:url('${x[1]}')"><div><h3>${esc(x[0])}</h3><a href="#contatti">INFO →</a></div></article>`).join('');
+ document.getElementById('people').innerHTML=data.people.map(x=>`<article class="person"><img src="${x[2]}"><div><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div></article>`).join('');
+ document.getElementById('schedule').innerHTML='<div class="row head"><span>Giorno</span><span>Ora</span><span>Corso</span></div>'+data.schedule.map(x=>`<div class="row"><span>${esc(x[0])}</span><span>${esc(x[1])}</span><span>${esc(x[2])}</span></div>`).join('');
+ document.getElementById('reviews').innerHTML=data.reviews.map(x=>`<article class="review"><div class="stars">★★★★★</div><p>“${esc(x[1])}”</p><b>${esc(x[0])}</b></article>`).join('');
+ document.getElementById('galleryGrid').innerHTML=data.gallery.map(x=>`<img src="${x}">`).join('');
+ document.getElementById('videoGrid').innerHTML=data.videos.map(x=>{
+   const url=toEmbedUrl(x[1]);
+   const media=isVideoFile(url)
+     ? `<video src="${url}" controls preload="metadata"></video>`
+     : `<iframe src="${url}" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`;
+   return `<article class="video-card">${media}<div class="vtitle">${esc(x[0])}</div></article>`;
+ }).join('');
+ document.getElementById('ageCards').innerHTML=[['Bambini','Gioco, movimento e disciplina.'],['Ragazzi','Tecnica, energia ed espressione.'],['Adulti','Passione, divertimento e nuove esperienze.']].map((x,i)=>`<a class="age-card" href="#corsi" style="background-image:url('${['https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=700&q=80','https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=700&q=80','https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=700&q=80'][i]}')"><div><h3>${x[0]}</h3><p style="color:#ddd">${x[1]}</p></div></a>`).join('');
+ document.getElementById('contactBox').innerHTML=`<div><b>📱 WhatsApp</b><br>${data.wa}<br><br><b>📞 Telefono</b><br>${esc(data.phone)}<br><br><b>📍 Indirizzo</b><br>${esc(data.address)}</div>`;
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function openAdmin(){document.getElementById('admin').classList.add('open');renderAdmin()}
+function closeAdmin(){document.getElementById('admin').classList.remove('open')}
+function showTab(id,btn){
+  ['corsiAdmin','teamAdmin','orariAdmin','recensioniAdmin','videoAdmin','galleryAdmin'].forEach(x=>document.getElementById(x).style.display='none');
+  document.getElementById('generale').style.display=id==='generale'?'grid':'none';
+  document.getElementById(id).style.display=id==='generale'?'grid':'block';
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+/* ============ ADMIN ============ */
+function renderAdmin(){
+ a_name.value=data.name;a_tagline.value=data.tagline;a_heroTitle.value=data.heroTitle.replaceAll('<br>','\n').replace(/<[^>]*>/g,'');a_heroText.value=data.heroText;a_mission.value=data.mission;a_wa.value=data.wa;a_phone.value=data.phone;a_address.value=data.address;a_ig.value=data.ig;a_fb.value=data.fb;a_tk.value=data.tk;a_heroImg.value=data.heroImg;
+ courseList.innerHTML=data.courses.map((x,i)=>`<div class="item"><div><input value="${esc(x[0])}" onchange="data.courses[${i}][0]=this.value"><input style="margin-top:6px" value="${esc(x[1])}" onchange="data.courses[${i}][1]=this.value"></div><button class="danger" onclick="data.courses.splice(${i},1);persist(true)">Elimina</button></div>`).join('');
+ teamList.innerHTML=data.people.map((x,i)=>`<div class="item"><div><input value="${esc(x[0])}" onchange="data.people[${i}][0]=this.value"><input style="margin-top:6px" value="${esc(x[1])}" onchange="data.people[${i}][1]=this.value"><input style="margin-top:6px" value="${esc(x[2])}" onchange="data.people[${i}][2]=this.value"></div><button class="danger" onclick="data.people.splice(${i},1);persist(true)">Elimina</button></div>`).join('');
+ scheduleList.innerHTML=data.schedule.map((x,i)=>`<div class="item"><div><input value="${esc(x[0])}" onchange="data.schedule[${i}][0]=this.value"><input style="margin-top:6px" value="${esc(x[1])}" onchange="data.schedule[${i}][1]=this.value"><input style="margin-top:6px" value="${esc(x[2])}" onchange="data.schedule[${i}][2]=this.value"></div><button class="danger" onclick="data.schedule.splice(${i},1);persist(true)">Elimina</button></div>`).join('');
+ reviewList.innerHTML=data.reviews.map((x,i)=>`<div class="item"><div><input value="${esc(x[0])}" onchange="data.reviews[${i}][0]=this.value"><textarea style="margin-top:6px" onchange="data.reviews[${i}][1]=this.value">${esc(x[1])}</textarea></div><button class="danger" onclick="data.reviews.splice(${i},1);persist(true)">Elimina</button></div>`).join('');
+ galleryList.innerHTML=data.gallery.map((x,i)=>`<div class="item"><div><input value="${esc(x)}" onchange="data.gallery[${i}]=this.value"><img class="upload-preview" src="${x}" onerror="this.style.display='none'"></div><button class="danger" onclick="data.gallery.splice(${i},1);persist(true)">Elimina</button></div>`).join('');
+ renderVideoAdmin();
+}
+function renderVideoAdmin(){
+  videoList.innerHTML=data.videos.map((x,i)=>{
+    const url=toEmbedUrl(x[1]);
+    const media=isVideoFile(url)
+      ? `<video src="${url}" controls preload="metadata"></video>`
+      : `<iframe src="${url}" allowfullscreen loading="lazy"></iframe>`;
+    return `<div class="video-item-edit">
+      <div class="row2">
+        <input value="${esc(x[0])}" placeholder="Titolo" oninput="data.videos[${i}][0]=this.value">
+        <button class="danger" onclick="data.videos.splice(${i},1);persist(true)">Elimina</button>
+      </div>
+      <input value="${esc(x[1])}" placeholder="Incolla link YouTube o URL MP4" oninput="onVideoUrlChange(${i},this.value)">
+      <div class="preview">${media}</div>
+      <div style="font-size:11px;color:#888">Anteprima — salvato come: <code>${esc(url)}</code></div>
+    </div>`;
+  }).join('');
+}
+function onVideoUrlChange(i,val){
+  data.videos[i][1]=val;
+  // aggiorna solo l'anteprima di questo item, senza ricreare tutto
+  const box=videoList.querySelectorAll('.video-item-edit')[i];
+  if(!box)return;
+  const url=toEmbedUrl(val);
+  const media=isVideoFile(url)
+    ? `<video src="${url}" controls preload="metadata"></video>`
+    : `<iframe src="${url}" allowfullscreen loading="lazy"></iframe>`;
+  box.querySelector('.preview').innerHTML=media;
+  const code=box.querySelector('code');
+  if(code)code.textContent=url;
+}
+function saveVideos(){persist()}
+
+function saveGeneral(){data.name=a_name.value;data.tagline=a_tagline.value;data.heroTitle=a_heroTitle.value.replace(/\n/g,'<br>');data.heroText=a_heroText.value;data.mission=a_mission.value;data.wa=a_wa.value.replace(/\D/g,'');data.phone=a_phone.value;data.address=a_address.value;data.ig=a_ig.value;data.fb=a_fb.value;data.tk=a_tk.value;data.heroImg=a_heroImg.value;persist()}
+function addCourse(){data.courses.push(['Nuovo corso','https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&fit=crop&w=700&q=80']);persist(true);renderAdmin()}
+function addPerson(){data.people.push(['Nuovo insegnante','Disciplina','https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80']);persist(true);renderAdmin()}
+function addSchedule(){data.schedule.push(['Lunedì','18:00','Nuovo corso']);persist(true);renderAdmin()}
+function addReview(){data.reviews.push(['Nome allievo','Nuova recensione']);persist(true);renderAdmin()}
+function addVideo(){data.videos.push(['Nuovo video','']);persist(true);renderAdmin()}
+function addGallery(){data.gallery.push('https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&fit=crop&w=900&q=80');persist(true);renderAdmin()}
+function sendWhatsApp(){window.open(`https://wa.me/${data.wa}?text=${encodeURIComponent('Ciao, vorrei informazioni e prenotare una lezione di prova presso '+data.name+'.')}`,'_blank')}
+render();
+</script>
+</body>
+</html>
