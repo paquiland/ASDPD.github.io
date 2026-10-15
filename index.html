@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="it" style="--pink: #c89aad; --pink-dark: #b98aa0; --dark: #1a1614; --light: #faf7f5; --text: #2a2320; --muted: #8a8078; --font-title: 'Cormorant Garamond',Georgia,serif; --font-body: 'Montserrat',Arial,sans-serif; --h1-size: clamp(32px,5.25vw,84px); --h2-size: clamp(24px,3.125vw,50px); --radius: 0px;"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A.S.D. Pakyta Dance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&amp;family=Montserrat:wght@300;400;700;900&amp;family=Creepster&amp;family=Mountains+of+Christmas:wght@400;700&amp;family=Cinzel+Decorative:wght@400;700&amp;family=Pacifico&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#c89aad;
+  --pink-dark:#b98aa0;
+  --dark:#1a1614;
+  --dark2:#2a2320;
+  --light:#faf7f5;
+  --text:#2a2320;
+  --muted:#8a8078;
+  --font-body:'Montserrat',Arial,Helvetica,sans-serif;
+  --font-title:'Cormorant Garamond',Georgia,serif;
+  --h1-size:clamp(45px,7vw,84px);
+  --h2-size:clamp(32px,4vw,50px);
+  --radius:0px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--font-body);color:var(--text);line-height:1.5}a{text-decoration:none;color:inherit}button,input,textarea,select{font:inherit}.wrap{width:min(1180px,92%);margin:auto}
+.top{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(26,22,20,.92);backdrop-filter:blur(12px);color:#fff}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}.logo{font-weight:400;letter-spacing:3px;font-size:20px;font-family:var(--font-title)}.logo small{display:block;color:var(--pink);font-size:9px;letter-spacing:5px;font-family:var(--font-body);font-weight:300}.logo img{max-height:52px;max-width:180px;display:block}.links{display:flex;gap:24px;align-items:center;font-size:12px;font-weight:400;letter-spacing:1px}.links a:hover{color:var(--pink)}.wa{background:var(--pink);padding:10px 16px;border-radius:25px;color:#fff}.hamb{display:none;background:none;border:0;color:#fff;font-size:25px;cursor:pointer;padding:8px;z-index:60;position:relative}
+
+/* ============ MENU MOBILE (overlay a tutto schermo) ============ */
+.mobileMenu{display:none;position:fixed;inset:0;background:var(--dark);z-index:55;padding:90px 8% 40px;overflow-y:auto;opacity:0;transition:opacity .25s ease}
+.mobileMenu.open{display:flex;flex-direction:column;opacity:1}
+.mobileMenu .closeBtn{position:absolute;top:18px;right:20px;background:rgba(255,255,255,.08);color:#fff;border:0;border-radius:50%;width:46px;height:46px;font-size:22px;cursor:pointer;display:grid;place-items:center}
+.mobileMenu .closeBtn:hover{background:var(--pink)}
+.mobileMenu a{color:#fff;font-size:19px;font-weight:400;letter-spacing:2px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.1);text-transform:uppercase;font-family:var(--font-body)}
+.mobileMenu a:hover,.mobileMenu a:active{color:var(--pink)}
+.mobileMenu a.waMobile{background:var(--pink);border:0;text-align:center;border-radius:0;margin-top:26px;padding:20px;font-weight:700;letter-spacing:3px;font-size:14px}
+.mobileMenu a.waMobile:hover{background:var(--pink-dark);color:#fff}
+.mobileMenu .menuLogo{color:var(--pink);font-family:var(--font-title);font-size:26px;letter-spacing:4px;margin-bottom:30px;text-align:center;text-transform:uppercase}
+.mobileMenu .menuLogo small{display:block;font-family:var(--font-body);font-size:10px;letter-spacing:6px;color:#fff;font-weight:300;margin-top:4px}
+/* ============ NEWS SLIDER ============ */
+.newsSlider{position:relative;padding:0;background:#fff}
+.sliderWrap{position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;background:#fff;margin-top:0}
+.slides{position:relative;width:100%;height:100%}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;background-size:cover;background-position:center;display:flex;align-items:center;color:#fff;pointer-events:none;padding-top:72px}
+.slide.active{opacity:1;pointer-events:auto}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,22,20,.9),rgba(26,22,20,.5))}
+.slide .slideContent{position:relative;z-index:2;width:min(1180px,92%);margin:auto;max-width:720px}
+.slide .slideEyebrow{font-size:11px;color:var(--pink);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.slide h2{font-size:clamp(28px,4vw,52px);line-height:1.1;margin:0 0 14px;font-family:var(--font-title);font-weight:400}
+.slide h1{font-size:var(--h1-size);line-height:.95;margin:12px 0;font-family:var(--font-title);font-weight:400}
+.slide .btn.primary{background:var(--pink);color:#fff}
+.slide .btn.outline{border:1px solid #fff;color:#fff;background:transparent}
+.slide p{font-size:16px;color:#e8e0dc;font-weight:300;margin:0 0 22px;max-width:560px}
+.slide .slideBtn{display:inline-block;padding:14px 24px;background:var(--pink);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius);text-decoration:none}
+.slide .slideBtn:hover{background:var(--pink-dark)}
+.slidePrev,.slideNext{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:0;width:52px;height:52px;font-size:26px;cursor:pointer;display:grid;place-items:center;z-index:5;transition:background .2s;backdrop-filter:blur(6px)}
+.slidePrev{left:16px}.slideNext{right:16px}
+.slidePrev:hover,.slideNext:hover{background:var(--pink)}
+.slideDots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:5}
+.slideDot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);border:0;cursor:pointer;padding:0;transition:all .3s}
+.slideDot.active{background:var(--pink);width:28px;border-radius:5px}
+@media(max-width:650px){
+  .sliderWrap{height:100vh;min-height:600px}
+  .slidePrev,.slideNext{width:40px;height:40px;font-size:20px}
+  .slidePrev{left:8px}.slideNext{right:8px}
+  .slide h2{font-size:26px}
+  .slide p{font-size:14px}
+}
+.hero h1{font-size:var(--h1-size);line-height:.95;margin:12px 0;font-family:var(--font-title);font-weight:400}.script{font-family:var(--font-title);font-style:italic;color:var(--pink);font-weight:400}
+/* ============ DECORAZIONI TEMI ============ */
+body[data-theme] h1,body[data-theme] h2{display:block}
+
+body[data-theme="halloween"] h1::before,body[data-theme="halloween"] h2::before{content:"🎃 ";display:inline-block;font-size:.6em;line-height:1;vertical-align:middle;margin-right:.15em;animation:sway 3s ease-in-out infinite}
+body[data-theme="halloween"] h1::after,body[data-theme="halloween"] h2::after{content:" 🦇";display:inline-block;font-size:.5em;line-height:1;vertical-align:middle;margin-left:.15em;animation:float 4s ease-in-out infinite}
+body[data-theme="halloween"] .eyebrow::after{content:" 🕸️"}
+body[data-theme="halloween"] .btn::after{content:" 👻"}
+body[data-theme="halloween"] .course h3::after,body[data-theme="halloween"] .person h3::after{content:" 🕷️";font-size:.7em}
+
+body[data-theme="natale"] h1::before,body[data-theme="natale"] h2::before{content:"🎅 ";display:inline-block;font-size:.6em;line-height:1;vertical-align:middle;margin-right:.15em;animation:sway 3s ease-in-out infinite}
+body[data-theme="natale"] h1::after,body[data-theme="natale"] h2::after{content:" 🎄";display:inline-block;font-size:.6em;line-height:1;vertical-align:middle;margin-left:.15em;animation:sway 3s ease-in-out infinite reverse}
+body[data-theme="natale"] .eyebrow::after{content:" ❄️"}
+body[data-theme="natale"] .btn::after{content:" 🎁"}
+body[data-theme="natale"] .course h3::after,body[data-theme="natale"] .person h3::after{content:" ⭐";font-size:.7em}
+body[data-theme="natale"] .review b::before{content:"🔔 "}
+body[data-theme="natale"] .benefit b::after,body[data-theme="natale"] .value b::after{content:" ❄";font-size:.7em;color:#a8d8f0}
+
+body[data-theme="carnevale"] h1::before,body[data-theme="carnevale"] h2::before{content:"🎭 ";display:inline-block;font-size:.6em;line-height:1;vertical-align:middle;margin-right:.15em;animation:sway 3s ease-in-out infinite}
+body[data-theme="carnevale"] h1::after,body[data-theme="carnevale"] h2::after{content:" ✨";display:inline-block;font-size:.5em;line-height:1;vertical-align:middle;margin-left:.15em;animation:float 3.5s ease-in-out infinite}
+body[data-theme="carnevale"] .eyebrow::after{content:" 🎉"}
+body[data-theme="carnevale"] .btn::after{content:" 🎊"}
+body[data-theme="carnevale"] .course h3::after,body[data-theme="carnevale"] .person h3::after{content:" 🎈";font-size:.7em}
+body[data-theme="carnevale"] .review b::before{content:"👑 "}
+body[data-theme="carnevale"] .benefit b::after,body[data-theme="carnevale"] .value b::after{content:" ✨";font-size:.7em}
+
+body[data-theme="pasqua"] h1::before,body[data-theme="pasqua"] h2::before{content:"🐰 ";display:inline-block;font-size:.6em;line-height:1;vertical-align:middle;margin-right:.15em;animation:sway 3s ease-in-out infinite}
+body[data-theme="pasqua"] h1::after,body[data-theme="pasqua"] h2::after{content:" 🥚";display:inline-block;font-size:.5em;line-height:1;vertical-align:middle;margin-left:.15em;animation:float 3.5s ease-in-out infinite}
+body[data-theme="pasqua"] .eyebrow::after{content:" 🌸"}
+body[data-theme="pasqua"] .btn::after{content:" 🐣"}
+body[data-theme="pasqua"] .course h3::after,body[data-theme="pasqua"] .person h3::after{content:" 🌷";font-size:.7em}
+body[data-theme="pasqua"] .benefit b::after,body[data-theme="pasqua"] .value b::after{content:" 🌼";font-size:.7em}
+
+body[data-theme="saggio"] h1::before,body[data-theme="saggio"] h2::before{content:"⭐ ";display:inline-block;font-size:.5em;line-height:1;vertical-align:middle;margin-right:.15em;animation:twinkle 2s ease-in-out infinite}
+body[data-theme="saggio"] h1::after,body[data-theme="saggio"] h2::after{content:" ✨";display:inline-block;font-size:.5em;line-height:1;vertical-align:middle;margin-left:.15em;animation:twinkle 2.5s ease-in-out infinite}
+body[data-theme="saggio"] .eyebrow::after{content:" 💫"}
+body[data-theme="saggio"] .btn::after{content:" 🌟"}
+body[data-theme="saggio"] .course h3::after,body[data-theme="saggio"] .person h3::after{content:" ✨";font-size:.7em}
+body[data-theme="saggio"] .review b::before{content:"🏆 "}
+body[data-theme="saggio"] .benefit b::after,body[data-theme="saggio"] .value b::after{content:" ⭐";font-size:.7em}
+
+@keyframes sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(6deg)}}
+@keyframes twinkle{0%,100%{opacity:.5}50%{opacity:1}}
+.eyebrow{font-size:12px;color:var(--pink);font-weight:700;letter-spacing:3px;text-transform:uppercase}.hero p{max-width:580px;color:#e8e0dc;font-size:18px;font-weight:300}.btn{display:inline-block;border:0;border-radius:var(--radius);padding:15px 26px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:2px;text-transform:uppercase}.primary{background:var(--pink);color:#fff}.outline{border:1px solid #fff;color:#fff;background:transparent}.hero .btn{margin:15px 8px 0 0}
+section{padding:85px 0}.dark{background:var(--dark);color:#fff}.light{background:var(--light)}h2{font-size:var(--h2-size);line-height:1.05;margin:8px 0 15px;font-family:var(--font-title);font-weight:400}p{color:var(--muted);font-weight:300}.dark p{color:#b0a8a2}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid2{display:grid;grid-template-columns:1fr 1.5fr;gap:55px;align-items:center}#gallery .grid2{align-items:start}.age-card,.course,.person,.review{border-radius:var(--radius);overflow:hidden}.age-card{min-height:300px;background-size:cover;background-position:center;position:relative;display:flex;align-items:end;color:#fff}.age-card:after,.course:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(26,22,20,.95))}.age-card div,.course div{position:relative;z-index:2;padding:22px}.age-card h3,.course h3{font-family:var(--font-title);font-weight:400;font-size:24px;margin:0 0 5px}.course-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.course{height:280px;position:relative;background-size:cover;background-position:center;display:flex;align-items:end;color:#fff;cursor:pointer;transition:transform .3s}.course:hover{transform:scale(1.02)}.course a{color:var(--pink);font-size:11px;font-weight:700;letter-spacing:1px}
+.phil{color:#fff;background:linear-gradient(90deg,rgba(26,22,20,.9),rgba(26,22,20,.5)),url('https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=2200&q=85') center/cover}.values{display:flex;gap:35px;flex-wrap:wrap;margin-top:20px}.value b{display:block;color:var(--pink);font-size:25px;font-weight:300;margin-bottom:5px}.value{font-size:13px;font-weight:300;letter-spacing:1px}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.person{background:#fff;box-shadow:0 10px 30px rgba(200,154,173,.15)}.person img{width:100%;height:250px;object-fit:cover}.person div{padding:16px}.person h3{font-family:var(--font-title);font-weight:400;font-size:22px;margin:0 0 5px}.person p{font-size:11px;color:var(--pink);font-weight:700;letter-spacing:1px;margin:0;text-transform:uppercase}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gallery img{height:190px;width:100%;object-fit:cover;border-radius:var(--radius);cursor:pointer;transition:transform .3s,opacity .3s}.gallery img:hover{transform:scale(1.03);opacity:.9}
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.video-card{background:#000;border-radius:var(--radius);overflow:hidden;position:relative}
+.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.video-wrap iframe,.video-wrap video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.video-card .vtitle{padding:12px 16px;color:#fff;font-size:13px;font-weight:400;background:var(--dark2);font-family:var(--font-title)}
+.benefits{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#e8e0dc}.benefit{text-align:center;background:var(--light);padding:28px 15px}.benefit b{font-size:25px;color:var(--pink);display:block;margin-bottom:8px;font-weight:300}.benefit{font-size:13px;font-weight:300;letter-spacing:1px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.review{padding:24px;border:1px solid #e8e0dc;background:#fff}.review p{font-family:var(--font-title);font-style:italic;font-size:17px;color:var(--text)}.stars{color:var(--pink);letter-spacing:3px;font-size:15px;margin-bottom:8px}.review b{font-size:12px;letter-spacing:2px;color:var(--pink);text-transform:uppercase;font-weight:700}
+.table{border:1px solid #3a322e;border-radius:var(--radius);overflow:hidden}.row{display:grid;grid-template-columns:110px 90px 1fr;padding:14px 18px;border-bottom:1px solid #3a322e;font-size:12px;font-weight:300}.row:last-child{border:0}.head{color:var(--pink);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:11px}
+.cta{color:#fff;background:linear-gradient(90deg,rgba(26,22,20,.85),rgba(26,22,20,.6)),url('https://images.unsplash.com/photo-1524594150405-9f6a3d8f5b8f?auto=format&fit=crop&w=2200&q=85') center/cover}.cta-flex{display:flex;justify-content:space-between;gap:40px;align-items:center}
+footer{background:#14100e;color:#8a8078;padding:45px 0 20px}.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.foot h4{color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin:0 0 15px;font-weight:700}.foot a,.foot p{font-size:11px;display:block;margin:6px 0;font-weight:300}.foot a:hover{color:var(--pink)}.copy{border-top:1px solid #2a2320;margin-top:30px;padding-top:18px;font-size:10px;letter-spacing:1px}
+.float{position:fixed;right:20px;bottom:20px;background:var(--pink);color:#fff;border-radius:50%;width:55px;height:55px;display:grid;place-items:center;font-size:23px;z-index:40}
+.adminBtn{position:fixed;left:18px;bottom:18px;z-index:80;background:#111;color:#fff;border:1px solid #444;border-radius:25px;padding:11px 16px;font-size:11px;font-weight:800;cursor:pointer}
+.admin{display:none;position:fixed;inset:0;background:#f2f3f5;z-index:100;overflow:auto}.admin.open{display:block}.adminHead{position:sticky;top:0;background:#08090d;color:#fff;padding:14px 3%;display:flex;justify-content:space-between;align-items:center;z-index:2}.adminHead button{border:0;border-radius:20px;padding:9px 14px;cursor:pointer}.adminBody{width:min(1100px,94%);margin:25px auto}.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:#fff;border-radius:16px;padding:22px;box-shadow:0 5px 20px #0000000d}.panel h3{margin:0 0 15px}.field{margin:10px 0}.field label{display:block;font-size:11px;font-weight:800;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;border:1px solid #ddd;border-radius:9px;padding:10px;font-size:13px}.field input[type=color]{padding:2px;height:42px;cursor:pointer}.field textarea{min-height:80px}.field input[type=range]{padding:0}.save{background:var(--pink);color:#fff;border:0;border-radius:24px;padding:12px 20px;font-weight:800;cursor:pointer}.item{border-top:1px solid #eee;padding:12px 0;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}.danger{background:#eee;border:0;border-radius:7px;padding:7px;cursor:pointer}.admin-note{background:#fff8e5;border-left:4px solid #e8a400;padding:13px;font-size:12px;margin-bottom:18px}.upload-preview{max-height:120px;border-radius:10px;margin-top:8px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:0;background:#ddd;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:12px}.tab.active{background:#111;color:#fff}
+.row-actions{display:flex;flex-direction:column;gap:6px}
+.row-actions button{border:0;border-radius:7px;padding:7px 10px;cursor:pointer;font-size:11px;font-weight:700}
+.btn-save-row{background:var(--pink);color:#fff}
+.btn-del-row{background:#eee;color:#111}
+.hint{font-size:11px;color:#888;margin-top:4px}
+.export-bar{background:#fff;border-radius:16px;padding:22px;box-shadow:0 5px 20px #0000000d;margin-bottom:18px;border:2px solid var(--pink)}
+.export-bar h3{margin:0 0 8px;color:var(--pink)}
+.export-bar p{margin:0 0 14px;font-size:13px;color:#555}
+.export-btn{background:var(--pink);color:#fff;border:0;border-radius:24px;padding:14px 24px;font-weight:900;cursor:pointer;font-size:14px}
+.color-row{display:grid;grid-template-columns:1fr 60px;gap:8px;align-items:center}
+
+.coursePage{display:none;position:fixed;inset:0;background:#fff;z-index:95;overflow:auto}
+.coursePage.open{display:block}
+.courseHero{min-height:60vh;background-size:cover;background-position:center;position:relative;display:flex;align-items:end;color:#fff;padding:80px 0 60px}
+.courseHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 20%,rgba(26,22,20,.92))}
+.courseHero .wrap{position:relative;z-index:2}
+.courseHero h1{font-family:var(--font-title);font-size:clamp(38px,6vw,72px);font-weight:400;margin:10px 0 0;color:#fff}
+.courseHero .eyebrow{color:var(--pink)}
+.courseContent{padding:60px 0;max-width:820px;margin:auto}
+.courseContent .wrap{width:min(820px,92%)}
+.courseContent p{font-size:16px;line-height:1.8;color:var(--text);font-weight:300;margin:18px 0;white-space:pre-line}
+.courseBack{position:fixed;top:20px;left:20px;z-index:10;background:rgba(26,22,20,.85);color:#fff;border:0;border-radius:30px;padding:12px 20px;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;backdrop-filter:blur(10px)}
+.courseBack:hover{background:var(--pink)}
+.courseMeta{margin:30px 0;padding:20px;background:var(--light);border-left:4px solid var(--pink)}
+.courseMeta div{font-size:14px;font-weight:300;margin:6px 0;color:var(--text)}
+.courseMeta b{color:var(--pink);letter-spacing:1px;font-size:11px;text-transform:uppercase;display:inline-block;min-width:110px}
+.courseCta{margin-top:40px;text-align:center}
+
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:110;align-items:center;justify-content:center;padding:40px 60px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lbClose{position:absolute;top:20px;right:25px;background:rgba(255,255,255,.1);color:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:22px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(10px);transition:background .2s}
+.lbClose:hover{background:var(--pink)}
+.lbPrev,.lbNext{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;width:56px;height:56px;font-size:28px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(10px);transition:background .2s}
+.lbPrev{left:20px}.lbNext{right:20px}
+.lbPrev:hover,.lbNext:hover{background:var(--pink)}
+.lbCounter{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);color:#fff;font-size:12px;letter-spacing:3px;background:rgba(0,0,0,.5);padding:8px 18px;border-radius:20px;font-weight:300}
+
+@media(max-width:950px){
+  .links{display:none}
+  .hamb{display:block}
+  .grid2{grid-template-columns:1fr}
+  .course-grid{grid-template-columns:repeat(3,1fr)}
+  .benefits{grid-template-columns:repeat(3,1fr)}
+  .foot{grid-template-columns:1fr 1fr}
+  .adminGrid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  section{padding:60px 0}
+  .grid3,.people,.reviews,.gallery,.video-grid{grid-template-columns:1fr}
+  .course-grid{grid-template-columns:repeat(2,1fr)}
+  .course{height:220px}
+  .benefits{grid-template-columns:1fr 1fr}
+  .cta-flex{flex-direction:column;align-items:flex-start}
+  .foot{grid-template-columns:1fr}
+  .hero{min-height:680px}
+  .hero p{font-size:15px}
+  .row{grid-template-columns:75px 65px 1fr;font-size:10px;padding:11px}
+  .lightbox{padding:20px 10px}
+  .lbPrev,.lbNext{width:44px;height:44px;font-size:22px}
+  .lbPrev{left:8px}.lbNext{right:8px}
+  .lbClose{width:40px;height:40px;font-size:18px;top:12px;right:12px}
+  .courseBack{top:10px;left:10px;padding:10px 14px;font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap nav" id="nav">
+    <a class="logo" href="#newsSection" id="logoBox"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/img/logo_trasparente.png?raw=true" alt="A.S.D. Pakyta Dance"></a>
+    <div class="links">
+      <a href="#newsSection">Home</a>
+      <a href="#corsi">Corsi</a>
+      <a href="#insegnanti">Insegnanti</a>
+      <a href="#video">Video</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#orari">Orari</a>
+      <a href="#contatti">Contatti</a>
+      <a class="wa" id="navWa" href="https://wa.me/393757729401" target="_blank">WhatsApp</a>
+    </div>
+    <button class="hamb" onclick="openMobileMenu()">☰</button>
+  </div>
+</header>
+
+<!-- ============ MENU MOBILE OVERLAY ============ -->
+<div class="mobileMenu" id="mobileMenu">
+  <button class="closeBtn" onclick="closeMobileMenu()">✕</button>
+  <div class="menuLogo">Pakyta<small>Dance</small></div>
+  <a href="#newsSection" onclick="closeMobileMenu()">Home</a>
+  <a href="#corsi" onclick="closeMobileMenu()">Corsi</a>
+  <a href="#insegnanti" onclick="closeMobileMenu()">Insegnanti</a>
+  <a href="#video" onclick="closeMobileMenu()">Video</a>
+  <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+  <a href="#orari" onclick="closeMobileMenu()">Orari</a>
+  <a href="#contatti" onclick="closeMobileMenu()">Contatti</a>
+  <a class="waMobile" id="mobileWa" href="https://wa.me/393757729401" target="_blank">WhatsApp</a>
+</div>
+
+<section class="newsSlider" id="newsSection" style="display: block;">
+  <div class="sliderWrap">
+    <div class="slides" id="slides"><div class="slide active" style="background-image:url('https://github.com/paquiland/ASDPD.github.io/blob/main/img/logo_trasparente.png?raw=true')"><div class="slideContent"><div class="slideEyebrow">A.S.D. Pakyta Dance</div><h1>Vivi la danza.<br><span class="script">Vivi te stesso.</span></h1><p>Corsi di danza per bambini, ragazzi e adulti. Passione, energia e divertimento in ogni passo.</p><a class="btn primary" href="#contatti">PROVA UNA LEZIONE →</a><a class="btn outline" style="margin-left:8px" href="#corsi">SCOPRI I CORSI →</a></div></div></div>
+    <button class="slidePrev" onclick="slidePrev()" style="display: none;">‹</button>
+    <button class="slideNext" onclick="slideNext()" style="display: none;">›</button>
+    <div class="slideDots" id="slideDots"></div>
+  </div>
+</section>
+
+<section><div class="wrap grid2">
+  <div>
+    <div class="eyebrow" id="ageEyebrow">Per ogni età, un percorso</div>
+    <h2 id="ageTitle">Non importa da dove parti.<br><span class="script">Importa dove vuoi arrivare.</span></h2>
+    <p id="ageText">Che tu sia alla prima esperienza o abbia già anni di danza alle spalle, troverai il corso e il percorso più adatto a te.</p>
+  </div>
+  <div class="grid3" id="ageCards"><a class="age-card" href="#corsi" style="background-image:url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&amp;fit=crop&amp;w=700&amp;q=80')"><div><h3>Bambini</h3><p style="color:#ddd">Gioco, movimento e disciplina.</p></div></a><a class="age-card" href="#corsi" style="background-image:url('https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&amp;fit=crop&amp;w=700&amp;q=80')"><div><h3>Ragazzi</h3><p style="color:#ddd">Tecnica, energia ed espressione.</p></div></a><a class="age-card" href="#corsi" style="background-image:url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&amp;fit=crop&amp;w=700&amp;q=80')"><div><h3>Adulti</h3><p style="color:#ddd">Passione, divertimento e nuove esperienze.</p></div></a></div>
+</div></section>
+
+<section class="dark" id="corsi"><div class="wrap">
+  <div class="eyebrow" id="corsiEyebrow">I nostri corsi</div>
+  <h2 id="corsiTitle">Scopri il tuo ritmo.</h2>
+  <p id="corsiText">Scegli la disciplina che più ti rappresenta.</p>
+  <div class="course-grid" id="courses"><article class="course" style="background-image:url('https://github.com/paquiland/ASDPD.github.io/blob/main/img/gioco_danza.png?raw=true')" onclick="openCoursePage(0)"><div><h3>Gioco Danza</h3><a href="javascript:void(0)">SCOPRI →</a></div></article><article class="course" style="background-image:url('https://plus.unsplash.com/premium_photo-1724419128049-202121f2bd26?w=500&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=NHwxMjA3fDA%3D')" onclick="openCoursePage(1)"><div><h3>Danze Latine</h3><a href="javascript:void(0)">SCOPRI →</a></div></article><article class="course" style="background-image:url('https://images.openai.com/static-rsc-4/9UP5VSwCmHwvb_SHIGuqLu7bzJTUTIp3x4ixDLcUr7-fR27pJAF_wPR5xqvAs_3ITpjYFibA2nq9BVJM6nkL2gt5w6MK_bbq0ny5PMig4AVLkw73zMDQ_GxRseMisSJRDf_Kb0cCtSGwKpJj9wiuDlSPGoJu5IqJ7_spUYOr67GNwBEmEAljQIBNTMZ9tljY?purpose=fullsize')" onclick="openCoursePage(2)"><div><h3>Hip Hop</h3><a href="javascript:void(0)">SCOPRI →</a></div></article><article class="course" style="background-image:url('https://github.com/paquiland/ASDPD.github.io/blob/main/img/caraibici.png?raw=true')" onclick="openCoursePage(3)"><div><h3>Caraibici</h3><a href="javascript:void(0)">SCOPRI →</a></div></article><article class="course" style="background-image:url('https://images.openai.com/static-rsc-4/RiPr5MbUKULiQ1--kN42YaEz5onwEk9c91dOZu34qGZJ5Eb5DpRN-Z8qJYvwtFBBFveWLpjDCj8z8QwlGu4vhTki4RQ-i5FrlLTsejsUeSNk41iG-EbI6c6ysROEkRrVwVPDMEPASEOzlQG99P04rH3niLpaMYvHUt7AMXbmexQ?purpose=inline')" onclick="openCoursePage(4)"><div><h3>Dance Fitness</h3><a href="javascript:void(0)">SCOPRI →</a></div></article><article class="course" style="background-image:url('https://images.openai.com/static-rsc-4/5Yv2NMBJBlEUJq-DQZNdjMCr8eYC_khqUER_uYzOR0ku_kLrxFRcYttBxqO8gV9N0EAgdiwm2eWouFTQAQIqO_BTgAUMGijRLtJ3-7JsrPQSAfWwztXBEu68gxfwDIH6rmqZ4GdPy3p-NkI-do80dAycZJ4K9QoyvGoNeQ5HW6A?purpose=inline')" onclick="openCoursePage(5)"><div><h3>Pilates</h3><a href="javascript:void(0)">SCOPRI →</a></div></article><article class="course" style="background-image:url('https://images.openai.com/static-rsc-4/oHvWNJkxPeiM_BWia7ZdXtCqmo-plwVgLXfjqZALJ08bSMlAb_WMT6vAN-szPsE7JCYzY4o8qbwIbzRGiIS86Pjvsir1RJ4Kh6FkVZLQ3UJhM4MG-w2El28AnXd2_8rcIIsY0dvFx12jn_OoiDMZKOO2xLNRQY1TIz37MGNmiKkgSj5jaNFkjRsqQGtHl-j2?purpose=fullsize')" onclick="openCoursePage(6)"><div><h3>Tammurriata</h3><a href="javascript:void(0)">SCOPRI →</a></div></article></div>
+</div></section>
+
+<section class="phil"><div class="wrap grid2"><div></div><div>
+  <div class="eyebrow" id="philEyebrow">La nostra filosofia</div>
+  <h2 id="philTitle">Non insegniamo solo a <span class="script">ballare.</span></h2>
+  <p id="philText">Insegniamo ad esprimersi, a mettersi in gioco, a condividere emozioni e a sentirsi parte di qualcosa.</p>
+  <div class="values" id="values"><div class="value"><b>♡</b>Passione</div><div class="value"><b>♢</b>Rispetto</div><div class="value"><b>↗</b>Crescita</div><div class="value"><b>☺</b>Divertimento</div><div class="value"><b>♧</b>Condivisione</div></div>
+</div></div></section>
+
+<section id="insegnanti"><div class="wrap grid2">
+  <div>
+    <div class="eyebrow" id="teamEyebrow">I nostri insegnanti</div>
+    <h2 id="teamTitle">Professionisti con la passione per la danza.</h2>
+    <p id="teamText">Un team qualificato, pronto ad accompagnarti nel tuo percorso con competenza ed entusiasmo.</p>
+  </div>
+  <div class="people" id="people"><article class="person"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/img/Fototessera_insegnante_latino.jpg?raw=true"><div><h3>Pasqualina Ricciardi</h3><p>Direttrice Tecnica e Artistica</p></div></article><article class="person"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/img/Fototessera_ballerina_latino.jpg?raw=true"><div><h3>Angela Maietta</h3><p>Maestra di danze Latine &amp; Choreographic e Synchro Latin</p></div></article></div>
+</div></section>
+
+<section class="dark" id="video"><div class="wrap">
+  <div class="eyebrow" id="videoEyebrow">Guardaci in azione</div>
+  <h2 id="videoTitle">I nostri video.</h2>
+  <p id="videoText">Un assaggio dell'energia che si respira in sala.</p>
+  <div class="video-grid" id="videoGrid"><article class="video-card"><div class="video-wrap"><video src="https://github.com/paquiland/ASDPD.github.io/raw/refs/heads/main/vid/Saggio_2026.mp4" controls="" preload="metadata"></video></div><div class="vtitle">Saggio di fine anno</div></article><article class="video-card"><div class="video-wrap"><video src="https://github.com/paquiland/ASDPD.github.io/raw/refs/heads/main/vid/Finale_compresso.mp4" controls="" preload="metadata"></video></div><div class="vtitle">Finale (Gara)</div></article></div>
+</div></section>
+
+<section class="dark" id="gallery"><div class="wrap grid2">
+  <div>
+    <div class="eyebrow" id="galleryEyebrow">La nostra energia</div>
+    <h2 id="galleryTitle">Non è solo una lezione.<br><span class="script">È un'esperienza.</span></h2>
+    <p id="galleryText">Scopri l'atmosfera della nostra scuola. Clicca su una foto per ingrandirla.</p>
+  </div>
+  <div class="gallery" id="galleryGrid"><img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Foto 1" onclick="openLightbox(0)"><img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Foto 2" onclick="openLightbox(1)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2025-4.jpg?raw=true" alt="Foto 3" onclick="openLightbox(2)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2025-3.jpg?raw=true" alt="Foto 4" onclick="openLightbox(3)"><img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Foto 5" onclick="openLightbox(4)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2025-2.jpg?raw=true" alt="Foto 6" onclick="openLightbox(5)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2025-1.jpg?raw=true" alt="Foto 7" onclick="openLightbox(6)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2024-4.jpg?raw=true" alt="Foto 8" onclick="openLightbox(7)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2024-3.jpg?raw=true" alt="Foto 9" onclick="openLightbox(8)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2024-2.jpg?raw=true" alt="Foto 10" onclick="openLightbox(9)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2024-1.jpg?raw=true" alt="Foto 11" onclick="openLightbox(10)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2023-3.jpg?raw=true" alt="Foto 12" onclick="openLightbox(11)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2023-2.jpg?raw=true" alt="Foto 13" onclick="openLightbox(12)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2023-1.jpg?raw=true" alt="Foto 14" onclick="openLightbox(13)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2022-3.jpg?raw=true" alt="Foto 15" onclick="openLightbox(14)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2022-2.jpg?raw=true" alt="Foto 16" onclick="openLightbox(15)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2022-1.jpg?raw=true" alt="Foto 17" onclick="openLightbox(16)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2019-2.jpg?raw=true" alt="Foto 18" onclick="openLightbox(17)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2019-1.jpg?raw=true" alt="Foto 19" onclick="openLightbox(18)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2019.jpg?raw=true" alt="Foto 20" onclick="openLightbox(19)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2022.jpg?raw=true" alt="Foto 21" onclick="openLightbox(20)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2023.jpg?raw=true" alt="Foto 22" onclick="openLightbox(21)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2024.jpg?raw=true" alt="Foto 23" onclick="openLightbox(22)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2025.jpg?raw=true" alt="Foto 24" onclick="openLightbox(23)"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2026.jpeg?raw=true" alt="Foto 25" onclick="openLightbox(24)"></div>
+</div></section>
+
+<section class="light"><div class="wrap">
+  <div class="eyebrow" id="benefitsEyebrow">Perché scegliere noi?</div>
+  <h2 id="benefitsTitle">Più di una scuola.</h2>
+  <div class="benefits" id="benefits"><div class="benefit"><b>♡</b>Passione</div><div class="benefit"><b>♢</b>Rispetto</div><div class="benefit"><b>↗</b>Crescita</div><div class="benefit"><b>☺</b>Divertimento</div><div class="benefit"><b>♧</b>Condivisione</div></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow" id="reviewsEyebrow">Le parole dei nostri allievi</div>
+  <h2 id="reviewsTitle">Le nostre storie.</h2>
+  <div class="reviews" id="reviews"><article class="review"><div class="stars">★★★★★</div><p>“Abbiamo iniziato per curiosità e ci siamo innamorati della danza. Un ambiente fantastico e insegnanti sempre disponibili.”</p><b>Federica M.</b></article><article class="review"><div class="stars">★★★★★</div><p>“Professionalità, passione e tanto divertimento. Consigliatissima!”</p><b>Gioia T.</b></article><article class="review"><div class="stars">★★★★★</div><p>“Mia figlia non vede l’ora che arrivi il giorno della lezione. Un posto speciale per crescere e fare nuove amicizie.”</p><b>Laura S.</b></article></div>
+</div></section>
+
+<section class="dark" id="orari"><div class="wrap grid2">
+  <div>
+    <div class="eyebrow" id="scheduleEyebrow">Trova il corso giusto per te</div>
+    <h2 id="scheduleTitle">Orari e corsi.</h2>
+    <p id="scheduleText">Consulta il calendario della scuola.</p>
+  </div>
+  <div class="table" id="schedule"><div class="row head"><span>Giorno</span><span>Ora</span><span>Corso</span></div><div class="row"><span>Lunedì</span><span>17:00 - 21:30</span><span>Danze Latine e Hip Hop</span></div><div class="row"><span>Martedì</span><span>17:00 - 18:00</span><span>Gioco Danza</span></div><div class="row"><span>Martedì</span><span>18:00 - 21:30</span><span>Danze Latine e Caraibiche</span></div><div class="row"><span>Mercoledì</span><span>17:00 - 21:00</span><span>Danze Latine</span></div><div class="row"><span>Giovedì</span><span>17:00 - 18:00</span><span>Gioco Danza</span></div><div class="row"><span>Giovedì</span><span>18:00 - 21:00</span><span>Danze Latine</span></div><div class="row"><span>Venerdì</span><span>19:00 - 21:00</span><span>Danze Latine</span></div></div>
+</div></section>
+
+<section class="cta" id="contatti"><div class="wrap cta-flex">
+  <div>
+    <div class="eyebrow" id="ctaEyebrow">Il tuo primo passo</div>
+    <h2 id="ctaTitle">Inizia qui.</h2>
+    <p id="ctaText">Non serve essere ballerini. Serve solo la voglia di iniziare.</p>
+    <a class="btn primary" href="#" id="ctaBtn" onclick="sendWhatsApp();return false">PRENOTA LA TUA LEZIONE →</a>
+  </div>
+  <div id="contactBox"><div><b>📱 WhatsApp</b><br>393757729401<br><br><b>📞 Telefono</b><br>3757729401<br><br><b>📍 Indirizzo</b><br>Via Francesco Gemma 56, Marcianise (CE)<br><br><b>✉️ Email</b><br><a href="mailto:pakytadance@gmail.com" style="color:inherit;text-decoration:underline">pakytadance@gmail.com</a></div></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot">
+    <div>
+      <div class="logo" id="footerLogo" style="color:#fff"><img src="https://github.com/paquiland/ASDPD.github.io/blob/main/img/logo_trasparente.png?raw=true" alt="A.S.D. Pakyta Dance"></div>
+      <p id="footerTag">Vivi la danza. Vivi te stesso.</p>
+    </div>
+    <div><h4>MEDIA</h4><a href="#gallery">Gallery</a><a href="#video">Video</a></div>
+    <div><h4>SCUOLA</h4><a href="#newsSection">Home</a><a href="#corsi">Corsi</a><a href="#insegnanti">Insegnanti</a><a href="#orari">Orari</a><a href="#contatti">Contatti</a></div>
+    <div><h4>SOCIAL</h4><a id="ig" href="#" target="_blank">Instagram</a><a id="fb" href="#" target="_blank">Facebook</a><a id="tk" href="#" target="_blank">TikTok</a></div>
+  </div>
+  <div class="copy">© <span id="year">2026</span> <span id="copyrightName">A.S.D. Pakyta Dance</span>. Tutti i diritti riservati.</div>
+</div></footer>
+
+<a class="float" id="floatWa" href="https://wa.me/393757729401" target="_blank">◉</a>
+
+<div class="coursePage" id="coursePage">
+  <button class="courseBack" onclick="closeCoursePage()">← Torna ai corsi</button>
+  <div class="courseHero" id="courseHero">
+    <div class="wrap">
+      <div class="eyebrow" id="courseEyebrow">Corso</div>
+      <h1 id="courseName"></h1>
+    </div>
+  </div>
+  <div class="courseContent"><div class="wrap">
+    <div class="courseMeta" id="courseMeta"></div>
+    <div id="courseDescription"></div>
+    <div class="courseCta">
+      <a class="btn primary" href="#" id="courseCtaBtn" onclick="closeCoursePage();return false"></a>
+    </div>
+  </div></div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lbClose" onclick="closeLightbox()">✕</button>
+  <button class="lbPrev" onclick="lbPrev()">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lbNext" onclick="lbNext()">›</button>
+  <div class="lbCounter" id="lbCounter"></div>
+</div>
+
+
+
+
+
+
+
+<script>var data={"name":"A.S.D. Pakyta Dance","tagline":"Vivi la danza. Vivi te stesso.","copyright":"A.S.D. Pakyta Dance","logo":"https://github.com/paquiland/ASDPD.github.io/blob/main/img/logo_trasparente.png?raw=true","logoText1":"PAKYTA","logoText2":"DANCE","heroImg":"https://github.com/paquiland/ASDPD.github.io/blob/main/img/logo_trasparente.png?raw=true","wa":"393757729401","phone":"3757729401","address":"Via Francesco Gemma 56, Marcianise (CE)","ig":"#","fb":"#","tk":"#","heroEyebrow":"A.S.D. Pakyta Dance","heroTitle":"Vivi la danza.<br><span class=\"script\">Vivi te stesso.</span>","heroText":"Corsi di danza per bambini, ragazzi e adulti. Passione, energia e divertimento in ogni passo.","heroBtn1Text":"PROVA UNA LEZIONE →","heroBtn1Href":"#contatti","heroBtn2Text":"SCOPRI I CORSI →","heroBtn2Href":"#corsi","ageEyebrow":"Per ogni età, un percorso","ageTitle":"Non importa da dove parti.<br><span class=\"script\">Importa dove vuoi arrivare.</span>","ageText":"Che tu sia alla prima esperienza o abbia già anni di danza alle spalle, troverai il corso e il percorso più adatto a te.","ageCards":[["Bambini","Gioco, movimento e disciplina.","https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=700&q=80"],["Ragazzi","Tecnica, energia ed espressione.","https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=700&q=80"],["Adulti","Passione, divertimento e nuove esperienze.","https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=700&q=80"]],"corsiEyebrow":"I nostri corsi","corsiTitle":"Scopri il tuo ritmo.","corsiText":"Scegli la disciplina che più ti rappresenta.","courseLinkLabel":"SCOPRI →","coursePageEyebrow":"Il nostro corso","courseBackText":"← Torna ai corsi","courseCtaText":"PRENOTA UNA LEZIONE DI PROVA →","courseMetaOrari":"Orari","courseMetaLivello":"Livello","philEyebrow":"La nostra filosofia","philTitle":"Non insegniamo solo a <span class=\"script\">ballare.</span>","philText":"Insegniamo ad esprimersi, a mettersi in gioco, a condividere emozioni e a sentirsi parte di qualcosa.","values":[["♡","Passione"],["♢","Rispetto"],["↗","Crescita"],["☺","Divertimento"],["♧","Condivisione"]],"teamEyebrow":"I nostri insegnanti","teamTitle":"Professionisti con la passione per la danza.","teamText":"Un team qualificato, pronto ad accompagnarti nel tuo percorso con competenza ed entusiasmo.","videoEyebrow":"Guardaci in azione","videoTitle":"I nostri video.","videoText":"Un assaggio dell'energia che si respira in sala.","galleryEyebrow":"La nostra energia","galleryTitle":"Non è solo una lezione.<br><span class=\"script\">È un'esperienza.</span>","galleryText":"Scopri l'atmosfera della nostra scuola. Clicca su una foto per ingrandirla.","benefitsEyebrow":"Perché scegliere noi?","benefitsTitle":"Più di una scuola.","benefits":[["♡","Passione"],["♢","Rispetto"],["↗","Crescita"],["☺","Divertimento"],["♧","Condivisione"]],"reviewsEyebrow":"Le parole dei nostri allievi","reviewsTitle":"Le nostre storie.","reviewStars":"★★★★★","scheduleEyebrow":"Trova il corso giusto per te","scheduleTitle":"Orari e corsi.","scheduleText":"Consulta il calendario della scuola.","colGiorno":"Giorno","colOra":"Ora","colCorso":"Corso","ctaEyebrow":"Il tuo primo passo","ctaTitle":"Inizia qui.","ctaText":"Non serve essere ballerini. Serve solo la voglia di iniziare.","ctaBtnText":"PRENOTA LA TUA LEZIONE →","ctaBtnAction":"whatsapp","ctaBtnHref":"#","navWaText":"WhatsApp","labelWa":"📱 WhatsApp","labelPhone":"📞 Telefono","labelAddress":"📍 Indirizzo","courses":[["Gioco Danza","https://github.com/paquiland/ASDPD.github.io/blob/main/img/gioco_danza.png?raw=true","Un primo divertente viaggio nel mondo delle danze latino-americane, pensato per avvicinare i bambini alla danza attraverso il gioco, la musica e il movimento.\n\nCon attività semplici e coinvolgenti, i più piccoli imparano a conoscere il ritmo, la coordinazione, l'equilibrio e l'espressione corporea, muovendosi a tempo di musica e scoprendo, passo dopo passo, l'energia e l'allegria delle danze latine.\n\nSamba, Cha Cha Cha e altri ritmi latino-americani diventano così uno strumento per giocare, socializzare, sviluppare la propria creatività e acquisire sicurezza nei movimenti, sempre in un ambiente sereno e divertente.","Mar 17:00 - 18:00 · Gio 17:00 - 18:00","4 - 6 anni"],["Danze Latine","https://plus.unsplash.com/premium_photo-1724419128049-202121f2bd26?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D","Le danze latino-americane sono un insieme di balli caratterizzati da energia, ritmo, espressività e grande coinvolgimento di coppia. Ogni danza ha una propria personalità, una musica distintiva e uno stile unico: dalla sensualità della Rumba all'energia esplosiva del Jive, passando per l'eleganza del Cha Cha Cha e la forza del Paso Doble.\n\nNella nostra scuola avrai l'opportunità di apprendere innanzitutto le basi tecniche e perfezionare progressivamente lo stile e l'esecuzione delle danze latino-americane, scegliendo la modalità che più rispecchia le tue passioni e attitudini: dal **Solo al Duo**, dalle coreografie di **Choreographic e Synchro Latin**, fino alla tradizionale ed emozionante esperienza del **ballo di coppia**.","Dal Lunedì al Venerdì orari in base al livello ed età","Tutti i livelli"],["Hip Hop","https://images.openai.com/static-rsc-4/9UP5VSwCmHwvb_SHIGuqLu7bzJTUTIp3x4ixDLcUr7-fR27pJAF_wPR5xqvAs_3ITpjYFibA2nq9BVJM6nkL2gt5w6MK_bbq0ny5PMig4AVLkw73zMDQ_GxRseMisSJRDf_Kb0cCtSGwKpJj9wiuDlSPGoJu5IqJ7_spUYOr67GNwBEmEAljQIBNTMZ9tljY?purpose=fullsize","L’Hip Hop è una cultura e uno stile di danza nato nelle strade delle grandi città statunitensi, sviluppatosi a partire dagli anni ’70 e diventato nel tempo un fenomeno internazionale. È una disciplina caratterizzata da energia, ritmo, creatività e libertà di espressione.\n\nAttraverso movimenti dinamici, isolazioni, footwork, groove e coreografie sempre diverse, l’Hip Hop permette a ogni ballerino di sviluppare il proprio stile e la propria personalità, imparando a interpretare la musica in modo originale e coinvolgente.\n\nÈ una danza che unisce tecnica e spontaneità, precisione e improvvisazione, offrendo un percorso adatto sia a chi si avvicina per la prima volta alla danza sia a chi desidera perfezionare il proprio livello.","Lun 19:00 - 20:00","Tutti i livelli"],["Caraibici","https://github.com/paquiland/ASDPD.github.io/blob/main/img/caraibici.png?raw=true","I balli caraibici sono un'esplosione di ritmo, energia e divertimento. Nati dalla ricca tradizione musicale dei Caraibi, uniscono movimento, musicalità e socialità, creando un'atmosfera coinvolgente e sempre diversa.\n\nDalla Salsa alla Bachata, al Merengue, ogni ritmo ha il proprio carattere e permette di vivere la danza in modo unico.\n\n👫 Balli di coppia\n\nNei balli caraibici di coppia, la musica e la connessione tra i ballerini sono protagoniste. Si imparano passo dopo passo ritmo, tecnica, figure, guida e interpretazione, sviluppando complicità e sicurezza nel ballo.\n\nÈ un modo divertente per imparare a ballare insieme, lasciandosi trasportare dalla musica e creando un vero dialogo attraverso il movimento.\n\n🔥 Balli di gruppo\n\nI balli caraibici di gruppo trasformano la pista in un momento di energia e condivisione. Coreografie coinvolgenti, ritmi trascinanti e movimenti coordinati permettono di divertirsi insieme, anche senza avere un partner.\n\nSono perfetti per chi vuole ballare, fare nuove conoscenze e vivere la musica in un ambiente allegro e dinamico.\n\n🎶 Ritmo • Energia • Socialità • Divertimento\n\nChe tu scelga il ballo di coppia o il ballo di gruppo, i caraibici sono un modo per imparare, divertirsi e lasciarsi coinvolgere dalla musica.\n\nVieni a scoprire il ritmo dei Caraibi e trova il tuo modo di ballare!","Mar 20:30 - 21:30 (Gruppo) · Ven 21:00 - 22:00 (Coppia O25)","Tutti i livelli"],["Dance Fitness","https://images.openai.com/static-rsc-4/RiPr5MbUKULiQ1--kN42YaEz5onwEk9c91dOZu34qGZJ5Eb5DpRN-Z8qJYvwtFBBFveWLpjDCj8z8QwlGu4vhTki4RQ-i5FrlLTsejsUeSNk41iG-EbI6c6ysROEkRrVwVPDMEPASEOzlQG99P04rH3niLpaMYvHUt7AMXbmexQ?purpose=inline","🔥 Dance Fitness – Zumba\n\nMusica, energia e movimento!\n\nLa Dance Fitness – Zumba unisce danza e fitness in lezioni divertenti e coinvolgenti, accompagnate dai ritmi della musica latina e internazionale.\n\nSalsa, merengue, reggaeton, cumbia e tanti altri ritmi ti faranno muovere, allenare e divertire, senza bisogno di essere un ballerino esperto.\n\nUn'attività adatta a tutti, perfetta per tenersi in movimento, scaricare lo stress e allenarsi con il sorriso.\n\nVieni a ballare, allenarti e divertirti con noi!","Mar 11:00 - 12:00 · Gio 11:00 - 12:00 (In programmazione)","Tutti i livelli"],["Pilates","https://images.openai.com/static-rsc-4/5Yv2NMBJBlEUJq-DQZNdjMCr8eYC_khqUER_uYzOR0ku_kLrxFRcYttBxqO8gV9N0EAgdiwm2eWouFTQAQIqO_BTgAUMGijRLtJ3-7JsrPQSAfWwztXBEu68gxfwDIH6rmqZ4GdPy3p-NkI-do80dAycZJ4K9QoyvGoNeQ5HW6A?purpose=inline","🧘 Pilates\n\nMovimento, controllo e benessere.\n\nIl Pilates è una disciplina che unisce movimenti controllati, respirazione e consapevolezza del corpo, aiutando a migliorare postura, equilibrio, flessibilità e forza.\n\nMatwork (Pilates a corpo libero): lezioni svolte sul tappetino (mat), utilizzando la forza di gravità, il controllo del proprio corpo e, quando necessario, piccoli attrezzi.\n\nAttraverso esercizi mirati si lavora sulla muscolatura profonda, migliorando stabilità, coordinazione e controllo dei movimenti.\n\nUn'attività adatta a chi vuole prendersi cura del proprio corpo, migliorare la postura e ritrovare equilibrio e benessere.\n\nPilates: conosci il tuo corpo, migliora il tuo movimento, ritrova il tuo equilibrio.","Mar 10:00 - 11:00 · Gio 10:00 - 11:00","Principiante/intermedio"],["Tammurriata","https://images.openai.com/static-rsc-4/oHvWNJkxPeiM_BWia7ZdXtCqmo-plwVgLXfjqZALJ08bSMlAb_WMT6vAN-szPsE7JCYzY4o8qbwIbzRGiIS86Pjvsir1RJ4Kh6FkVZLQ3UJhM4MG-w2El28AnXd2_8rcIIsY0dvFx12jn_OoiDMZKOO2xLNRQY1TIz37MGNmiKkgSj5jaNFkjRsqQGtHl-j2?purpose=fullsize","Tammurriata\n\nTradizione, ritmo e passione.\n\nLa Tammurriata è una delle espressioni più autentiche della tradizione popolare campana, una danza accompagnata dal ritmo intenso della tammorra e dal canto.\n\nÈ un ballo fatto di energia, improvvisazione e partecipazione, nel quale il movimento nasce dal ritmo e dal dialogo tra i danzatori. Ogni gesto racconta la cultura e la storia del territorio, mantenendo viva una tradizione che si tramanda di generazione in generazione.\n\nDurante le lezioni imparerai i passi, i ritmi e le figure tradizionali, scoprendo anche l'importanza dell'interpretazione e dell'espressività personale.\n\nUn'attività adatta a chi vuole avvicinarsi alla cultura popolare campana, imparare a ballare e vivere il ritmo della tammorra in un'atmosfera coinvolgente e conviviale.\n\nTammurriata: il ritmo della tradizione, la passione della nostra terra.","Lun  · Ven In programmazione","Tutti i livelli"]],"people":[["Pasqualina Ricciardi","Direttrice Tecnica e Artistica","https://github.com/paquiland/ASDPD.github.io/blob/main/img/Fototessera_insegnante_latino.jpg?raw=true"],["Angela Maietta","Maestra di danze Latine & Choreographic e Synchro Latin","https://github.com/paquiland/ASDPD.github.io/blob/main/img/Fototessera_ballerina_latino.jpg?raw=true"]],"schedule":[["Lunedì","17:00 - 21:30","Danze Latine e Hip Hop"],["Martedì","17:00 - 18:00","Gioco Danza"],["Martedì","18:00 - 21:30","Danze Latine e Caraibiche"],["Mercoledì","17:00 - 21:00","Danze Latine"],["Giovedì","17:00 - 18:00","Gioco Danza"],["Giovedì","18:00 - 21:00","Danze Latine"],["Venerdì","19:00 - 21:00","Danze Latine"]],"reviews":[["Federica M.","Abbiamo iniziato per curiosità e ci siamo innamorati della danza. Un ambiente fantastico e insegnanti sempre disponibili."],["Gioia T.","Professionalità, passione e tanto divertimento. Consigliatissima!"],["Laura S.","Mia figlia non vede l’ora che arrivi il giorno della lezione. Un posto speciale per crescere e fare nuove amicizie."]],"videos":[["Saggio di fine anno","https://github.com/paquiland/ASDPD.github.io/raw/refs/heads/main/vid/Saggio_2026.mp4"],["Finale (Gara)","https://github.com/paquiland/ASDPD.github.io/raw/refs/heads/main/vid/Finale_compresso.mp4"]],"gallery":["https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=1600&q=85","https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1600&q=85","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2025-4.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2025-3.jpg?raw=true","https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&fit=crop&w=1600&q=85","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2025-2.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2025-1.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2024-4.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2024-3.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2024-2.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2024-1.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2023-3.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2023-2.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2023-1.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2022-3.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2022-2.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2022-1.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2019-2.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/2019-1.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2019.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2022.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2023.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2024.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2025.jpg?raw=true","https://github.com/paquiland/ASDPD.github.io/blob/main/gallery/Banner%20Pakyta_2026.jpeg?raw=true"],"appearance":{"pink":"#c89aad","pinkDark":"#b98aa0","dark":"#1a1614","light":"#faf7f5","text":"#2a2320","muted":"#8a8078","fontTitle":"'Cormorant Garamond',Georgia,serif","fontBody":"'Montserrat',Arial,sans-serif","h1Size":84,"h2Size":50,"heroHeight":760,"radius":0},"theme":"none","email":"pakytadance@gmail.com","labelEmail":"✉️ Email","themeScope":"background","sliderEnabled":false,"sliderAutoplay":true,"sliderInterval":5000,"sliderTitle":"Le nostre news","sliderEyebrow":"In evidenza","slides":[["Iscrizioni aperte per il nuovo anno","Sono aperte le iscrizioni ai corsi di danza per l'anno 2026/2027. Posti limitati, affrettati a prenotare la tua lezione di prova!","https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=2200&q=85","#contatti","SCOPRI DI PIÙ →"],["Saggio di fine anno - 15 giugno","Vi aspettiamo al Teatro Comunale per il saggio di fine anno. Un evento imperdibile per tutta la famiglia!","https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&fit=crop&w=2200&q=85","#video","GUARDA I VIDEO →"],["Nuovo corso di hip hop","Da settembre attiviamo il nuovo corso di hip hop per ragazzi dai 12 ai 18 anni. Lezioni il martedì e venerdì sera.","https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=2200&q=85","#corsi","VEDI I CORSI →"]]};
+var THEMES={"none":{"name":"Nessuno","emoji":"⚪","desc":"Palette personalizzata","colors":{}},"halloween":{"name":"Halloween","emoji":"🎃","desc":"Arancio, nero, viola","colors":{"pink":"#ff7a1a","pinkDark":"#e06500","dark":"#0d0a14","light":"#fdf3e7","text":"#1a0f2e","muted":"#7a6b5c"},"decoration":"🎃🕸️👻🦇🕷️","decorationColor":"rgba(255,122,26,.15)"},"natale":{"name":"Natale","emoji":"🎄","desc":"Rosso, verde, oro","colors":{"pink":"#c8102e","pinkDark":"#8b0a1e","dark":"#0a2e1a","light":"#fef9f3","text":"#1a2e1e","muted":"#7a5c4c"},"decoration":"🎄🎁❄️⭐🔔","decorationColor":"rgba(200,16,46,.15)"},"carnevale":{"name":"Carnevale","emoji":"🎭","desc":"Viola, oro, rosa","colors":{"pink":"#d4a017","pinkDark":"#b8860b","dark":"#2d1b4e","light":"#fef7ee","text":"#2d1b4e","muted":"#7a5c8a"},"decoration":"🎭🎉✨🎊👑","decorationColor":"rgba(212,160,23,.18)"},"pasqua":{"name":"Pasqua","emoji":"🐣","desc":"Rosa, azzurro, verde","colors":{"pink":"#f4a6c0","pinkDark":"#e17fa0","dark":"#2a3d4a","light":"#fdf6f9","text":"#2a3d4a","muted":"#8a7a8a"},"decoration":"🐣🥚🌸🌷🐰","decorationColor":"rgba(244,166,192,.18)"},"saggio":{"name":"Saggio","emoji":"⭐","desc":"Oro, nero, bianco","colors":{"pink":"#d4af37","pinkDark":"#b8942a","dark":"#0d0d0d","light":"#faf8f3","text":"#1a1a1a","muted":"#7a7a6a"},"decoration":"⭐✨🌟💫🎭","decorationColor":"rgba(212,175,55,.15)"}};
+var A=data.appearance;
+var r=document.documentElement.style;
+r.setProperty("--pink",A.pink);r.setProperty("--pink-dark",A.pinkDark);r.setProperty("--dark",A.dark);r.setProperty("--light",A.light);r.setProperty("--text",A.text);r.setProperty("--muted",A.muted);r.setProperty("--font-title",A.fontTitle);r.setProperty("--font-body",A.fontBody);r.setProperty("--h1-size","clamp(32px,"+(A.h1Size/16)+"vw,"+A.h1Size+"px)");r.setProperty("--h2-size","clamp(24px,"+(A.h2Size/16)+"vw,"+A.h2Size+"px)");r.setProperty("--radius",A.radius+"px");document.querySelector(".hero").style.minHeight=A.heroHeight+"px";
+(function(){var t=THEMES[data.theme]||THEMES.none;var A2=data.appearance;if(data.theme==="none"||!data.theme){r.setProperty("--pink",A2.pink);r.setProperty("--pink-dark",A2.pinkDark);r.setProperty("--dark",A2.dark);r.setProperty("--light",A2.light);r.setProperty("--text",A2.text);r.setProperty("--muted",A2.muted);return}document.body.setAttribute("data-theme",data.theme);var c=t.colors;var scope=data.themeScope||"full";if(c.dark)r.setProperty("--dark",c.dark);if(c.light)r.setProperty("--light",c.light);if(c.text)r.setProperty("--text",c.text);if(c.muted)r.setProperty("--muted",c.muted);if(scope==="full"){if(c.pink)r.setProperty("--pink",c.pink);if(c.pinkDark)r.setProperty("--pink-dark",c.pinkDark)}else{r.setProperty("--pink",A2.pink);r.setProperty("--pink-dark",A2.pinkDark)}var dec=document.createElement("div");dec.id="themeDecor";dec.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;opacity:.08;font-size:80px;line-height:1;display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-around;padding:40px;gap:60px";var icons=t.decoration||"";var html="";for(var i=0;i<20;i++){html+=("<span>"+icons+"</span>")}dec.innerHTML=html;document.body.appendChild(dec)})();
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]})}
+function toEmbed(u){u=(u||"").trim();var m=u.match(/youtube\.com\/watch\?v=([\w-]+)/);if(m)return "https://www.youtube-nocookie.com/embed/"+m[1];m=u.match(/youtu\.be\/([\w-]+)/);if(m)return "https://www.youtube-nocookie.com/embed/"+m[1];m=u.match(/youtube\.com\/shorts\/([\w-]+)/);if(m)return "https://www.youtube-nocookie.com/embed/"+m[1];return u}
+function sendWhatsApp(){window.open("https://wa.me/"+data.wa+"?text="+encodeURIComponent("Ciao, vorrei informazioni e prenotare una lezione di prova presso "+data.name+"."),"_blank")}
+var currentCourseIndex=0;var currentLbIndex=0;
+function openMobileMenu(){document.getElementById("mobileMenu").classList.add("open");document.body.style.overflow="hidden"}
+function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("open");document.body.style.overflow=""}
+document.title=data.name;
+var lb=document.getElementById("logoBox");if(data.logo&&data.logo.trim()!==""){lb.innerHTML='<img src="'+data.logo+'" alt="'+esc(data.name)+'">'}else{lb.innerHTML='<span>'+esc(data.logoText1)+'</span><small>'+esc(data.logoText2)+'</small>'}
+var fl=document.getElementById("footerLogo");if(data.logo&&data.logo.trim()!==""){fl.innerHTML='<img src="'+data.logo+'" alt="'+esc(data.name)+'">'}else{fl.innerHTML=esc(data.logoText1)+'<small>'+esc(data.logoText2)+'</small>'}
+(function(){var ns=document.getElementById("newsSection");if(!ns)return;if(data.sliderEnabled){ns.style.display="block";var heroSlide={title:data.heroTitle,eyebrow:data.heroEyebrow,text:data.heroText,img:data.heroImg,btn1Text:data.heroBtn1Text,btn1Href:data.heroBtn1Href,btn2Text:data.heroBtn2Text,btn2Href:data.heroBtn2Href,isHero:true};var newsSlides=(data.slides||[]).map(function(s){return {title:esc(s[0]),eyebrow:data.sliderEyebrow,text:s[1],img:s[2],btn1Text:s[4],btn1Href:s[3],isHero:false}});var allSlides=[heroSlide].concat(newsSlides);var sh=allSlides.map(function(s,i){var ch="";if(s.isHero){ch='<div class="slideEyebrow">'+esc(s.eyebrow)+'</div><h1>'+s.title+'</h1><p>'+esc(s.text)+'</p><a class="btn primary" href="'+esc(s.btn1Href||"#")+'">'+esc(s.btn1Text||"")+'</a><a class="btn outline" style="margin-left:8px" href="'+esc(s.btn2Href||"#")+'">'+esc(s.btn2Text||"")+'</a>'}else{var btn=s.btn1Text?('<a class="slideBtn" href="'+esc(s.btn1Href||"#")+'">'+esc(s.btn1Text)+"</a>"):"";ch='<div class="slideEyebrow">'+esc(s.eyebrow)+'</div><h2>'+esc(s.title)+'</h2><p>'+esc(s.text)+'</p>'+btn}return '<div class="slide'+(i===0?" active":"")+'" data-index="'+i+'" style="background-image:url(\''+s.img+'\')"><div class="slideContent">'+ch+"</div></div>"}).join("");document.getElementById("slides").innerHTML=sh;var dh=allSlides.map(function(s,i){return '<button class="slideDot'+(i===0?" active":"")+'" onclick="slideGo('+i+')"></button>'}).join("");document.getElementById("slideDots").innerHTML=dh;var frecce=allSlides.length>1?"grid":"none";document.querySelector(".slidePrev").style.display=frecce;document.querySelector(".slideNext").style.display=frecce;startSliderAutoplay()}else{ns.style.display="block";document.getElementById("slides").innerHTML='<div class="slide active" style="background-image:url(\''+data.heroImg+'\')"><div class="slideContent"><div class="slideEyebrow">'+esc(data.heroEyebrow)+'</div><h1>'+data.heroTitle+'</h1><p>'+esc(data.heroText)+'</p><a class="btn primary" href="'+esc(data.heroBtn1Href||"#")+'">'+esc(data.heroBtn1Text||"")+'</a><a class="btn outline" style="margin-left:8px" href="'+esc(data.heroBtn2Href||"#")+'">'+esc(data.heroBtn2Text||"")+'</a></div></div>';document.getElementById("slideDots").innerHTML="";document.querySelector(".slidePrev").style.display="none";document.querySelector(".slideNext").style.display="none";stopSliderAutoplay()}})();
+document.getElementById("ageEyebrow").textContent=data.ageEyebrow;document.getElementById("ageTitle").innerHTML=data.ageTitle;document.getElementById("ageText").textContent=data.ageText;
+document.getElementById("ageCards").innerHTML=data.ageCards.map(function(x){return '<a class="age-card" href="#corsi" style="background-image:url(\''+x[2]+'\')"><div><h3>'+esc(x[0])+'</h3><p style="color:#ddd">'+esc(x[1])+'</p></div></a>'}).join("");
+document.getElementById("corsiEyebrow").textContent=data.corsiEyebrow;document.getElementById("corsiTitle").textContent=data.corsiTitle;document.getElementById("corsiText").textContent=data.corsiText;
+document.getElementById("courses").innerHTML=data.courses.map(function(x,i){return '<article class="course" style="background-image:url(\''+x[1]+'\')" onclick="openCoursePage('+i+')"><div><h3>'+esc(x[0])+'</h3><a href="javascript:void(0)">'+esc(data.courseLinkLabel)+'</a></div></article>'}).join("");
+document.getElementById("philEyebrow").textContent=data.philEyebrow;document.getElementById("philTitle").innerHTML=data.philTitle;document.getElementById("philText").textContent=data.philText;
+document.getElementById("values").innerHTML=data.values.map(function(x){return '<div class="value"><b>'+esc(x[0])+'</b>'+esc(x[1])+'</div>'}).join("");
+document.getElementById("teamEyebrow").textContent=data.teamEyebrow;document.getElementById("teamTitle").textContent=data.teamTitle;document.getElementById("teamText").textContent=data.teamText;
+document.getElementById("people").innerHTML=data.people.map(function(x){return '<article class="person"><img src="'+x[2]+'"><div><h3>'+esc(x[0])+'</h3><p>'+esc(x[1])+'</p></div></article>'}).join("");
+document.getElementById("videoEyebrow").textContent=data.videoEyebrow;document.getElementById("videoTitle").textContent=data.videoTitle;document.getElementById("videoText").textContent=data.videoText;
+document.getElementById("videoGrid").innerHTML=data.videos.map(function(x){var u=toEmbed(x[1]);var isF=/\.(mp4|webm|ogg)(\?.*)?$/i.test(u);var m=isF?'<video src="'+u+'" controls preload="metadata"></video>':'<iframe src="'+u+'" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>';return '<article class="video-card"><div class="video-wrap">'+m+'</div><div class="vtitle">'+esc(x[0])+'</div></article>'}).join("");
+document.getElementById("galleryEyebrow").textContent=data.galleryEyebrow;document.getElementById("galleryTitle").innerHTML=data.galleryTitle;document.getElementById("galleryText").textContent=data.galleryText;
+document.getElementById("galleryGrid").innerHTML=data.gallery.map(function(x,i){return '<img src="'+x+'" alt="Foto '+(i+1)+'" onclick="openLightbox('+i+')">'}).join("");
+document.getElementById("benefitsEyebrow").textContent=data.benefitsEyebrow;document.getElementById("benefitsTitle").textContent=data.benefitsTitle;
+document.getElementById("benefits").innerHTML=data.benefits.map(function(x){return '<div class="benefit"><b>'+esc(x[0])+'</b>'+esc(x[1])+'</div>'}).join("");
+document.getElementById("reviewsEyebrow").textContent=data.reviewsEyebrow;document.getElementById("reviewsTitle").textContent=data.reviewsTitle;
+document.getElementById("reviews").innerHTML=data.reviews.map(function(x){return '<article class="review"><div class="stars">'+esc(data.reviewStars)+'</div><p>“'+esc(x[1])+'”</p><b>'+esc(x[0])+'</b></article>'}).join("");
+document.getElementById("scheduleEyebrow").textContent=data.scheduleEyebrow;document.getElementById("scheduleTitle").textContent=data.scheduleTitle;document.getElementById("scheduleText").textContent=data.scheduleText;
+document.getElementById("schedule").innerHTML='<div class="row head"><span>'+esc(data.colGiorno)+'</span><span>'+esc(data.colOra)+'</span><span>'+esc(data.colCorso)+'</span></div>'+data.schedule.map(function(x){return '<div class="row"><span>'+esc(x[0])+'</span><span>'+esc(x[1])+'</span><span>'+esc(x[2])+'</span></div>'}).join("");
+document.getElementById("ctaEyebrow").textContent=data.ctaEyebrow;document.getElementById("ctaTitle").textContent=data.ctaTitle;document.getElementById("ctaText").textContent=data.ctaText;
+var cta=document.getElementById("ctaBtn");cta.textContent=data.ctaBtnText;if(data.ctaBtnAction==="link"){cta.setAttribute("onclick","");cta.href=data.ctaBtnHref||"#"}else{cta.setAttribute("onclick","sendWhatsApp();return false");cta.href="#"}
+document.getElementById("navWa").href="https://wa.me/"+data.wa;document.getElementById("navWa").textContent=data.navWaText;document.getElementById("mobileWa").href="https://wa.me/"+data.wa;
+document.getElementById("floatWa").href="https://wa.me/"+data.wa;
+document.getElementById("ig").href=data.ig;document.getElementById("fb").href=data.fb;document.getElementById("tk").href=data.tk;
+document.getElementById("footerTag").textContent=data.tagline;
+document.getElementById("copyrightName").textContent=data.copyright||data.name;
+document.getElementById("year").textContent=new Date().getFullYear();
+var emailHtml="";if(data.email&&data.email.trim()!==""){emailHtml='<br><br><b>'+esc(data.labelEmail||"✉️ Email")+'</b><br><a href="mailto:'+esc(data.email)+'" style="color:inherit;text-decoration:underline">'+esc(data.email)+'</a>'}
+document.getElementById("contactBox").innerHTML='<div><b>'+esc(data.labelWa)+'</b><br>'+data.wa+'<br><br><b>'+esc(data.labelPhone)+'</b><br>'+esc(data.phone)+'<br><br><b>'+esc(data.labelAddress)+'</b><br>'+esc(data.address)+emailHtml+'</div>';
+var sliderCurrent=0;var sliderTimer=null;
+function startSliderAutoplay(){stopSliderAutoplay();if(!data.sliderAutoplay)return;var iv=parseInt(data.sliderInterval,10)||5000;sliderTimer=setInterval(function(){slideNext()},iv)}
+function stopSliderAutoplay(){if(sliderTimer){clearInterval(sliderTimer);sliderTimer=null}}
+function slideGo(i){var slides=document.querySelectorAll("#slides .slide");var dots=document.querySelectorAll("#slideDots .slideDot");if(!slides.length)return;sliderCurrent=(i+slides.length)%slides.length;slides.forEach(function(s,idx){s.classList.toggle("active",idx===sliderCurrent)});dots.forEach(function(d,idx){d.classList.toggle("active",idx===sliderCurrent)})}
+function slideNext(){slideGo(sliderCurrent+1)}
+function slidePrev(){slideGo(sliderCurrent-1)}
+function startSliderAutoplay(){stopSliderAutoplay();if(!data.sliderAutoplay)return;var iv=parseInt(data.sliderInterval,10)||5000;sliderTimer=setInterval(function(){slideNext()},iv)}
+function stopSliderAutoplay(){if(sliderTimer){clearInterval(sliderTimer);sliderTimer=null}}
+function openCoursePage(i){currentCourseIndex=i;var c=data.courses[i];if(!c)return;var page=document.getElementById("coursePage");document.getElementById("courseHero").style.backgroundImage="linear-gradient(rgba(26,22,20,.5),rgba(26,22,20,.85)),url('"+c[1]+"')";document.getElementById("courseEyebrow").textContent=data.coursePageEyebrow;document.getElementById("courseName").textContent=c[0];var meta="";if(c[3])meta+='<div><b>'+esc(data.courseMetaOrari)+'</b> '+esc(c[3])+'</div>';if(c[4])meta+='<div><b>'+esc(data.courseMetaLivello)+'</b> '+esc(c[4])+'</div>';document.getElementById("courseMeta").innerHTML=meta;document.getElementById("courseMeta").style.display=meta?"block":"none";document.getElementById("courseDescription").innerHTML='<p>'+esc(c[2]||"")+'</p>';var btn=document.getElementById("courseCtaBtn");btn.textContent=data.courseCtaText;page.classList.add("open");document.body.style.overflow="hidden";page.scrollTop=0}
+function closeCoursePage(){document.getElementById("coursePage").classList.remove("open");document.body.style.overflow=""}
+function openLightbox(i){currentLbIndex=i;updateLightbox();document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden"}
+function closeLightbox(){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow=""}
+function updateLightbox(){var img=document.getElementById("lbImg");img.src=data.gallery[currentLbIndex];document.getElementById("lbCounter").textContent=(currentLbIndex+1)+" / "+data.gallery.length;var hide=data.gallery.length<=1?"none":"grid";document.querySelector(".lbPrev").style.display=hide;document.querySelector(".lbNext").style.display=hide}
+function lbPrev(){currentLbIndex=(currentLbIndex-1+data.gallery.length)%data.gallery.length;updateLightbox()}
+function lbNext(){currentLbIndex=(currentLbIndex+1)%data.gallery.length;updateLightbox()}
+document.addEventListener("keydown",function(e){if(document.getElementById("lightbox").classList.contains("open")){if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")lbPrev();if(e.key==="ArrowRight")lbNext()}else if(document.getElementById("coursePage").classList.contains("open")){if(e.key==="Escape")closeCoursePage()}else if(document.getElementById("mobileMenu").classList.contains("open")){if(e.key==="Escape")closeMobileMenu()}});
+</script></body></html>
